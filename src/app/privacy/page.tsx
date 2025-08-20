@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="flex justify-center">
+        <div className="w-full max-w-4xl">
         <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -173,6 +174,7 @@ export default function PrivacyPage() {
               This privacy policy is compliant with GDPR and other applicable data protection regulations.
             </p>
           </MotionDiv>
+        </div>
         </div>
       </div>
     </div>

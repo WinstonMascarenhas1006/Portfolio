@@ -191,13 +191,14 @@ export default function SkillsPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
+        <div className="relative py-24 flex justify-center">
+          <div className="w-full max-w-4xl px-4">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
             <MotionDiv
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -213,6 +214,7 @@ export default function SkillsPage() {
               A comprehensive overview of my technical expertise across cybersecurity, cloud computing, development, and DevOps.
             </p>
           </MotionDiv>
+        </div>
         </div>
         
         {/* Animated background elements */}

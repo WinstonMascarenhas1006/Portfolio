@@ -205,15 +205,9 @@ export default function TestimonialsPage() {
 
             {/* Testimonial Text */}
             <div className="mb-4 flex-1">
-              {isExpanded ? (
-                <p className="text-[#E0E0E0] text-sm leading-relaxed">
-                  {testimonial.fullTestimonial}
-                </p>
-              ) : (
-                <p className="text-[#E0E0E0] text-sm leading-relaxed line-clamp-4">
-                  {testimonial.shortTestimonial}
-                </p>
-              )}
+              <p className={`text-[#E0E0E0] text-sm leading-relaxed ${isExpanded ? '' : 'line-clamp-4'}`}>
+                {isExpanded ? testimonial.fullTestimonial : testimonial.shortTestimonial}
+              </p>
             </div>
 
             {/* Keywords Badges */}
@@ -298,13 +292,14 @@ export default function TestimonialsPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#1E293B] via-[#0F172A] to-[#1E1B4B] text-white">
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
+        <div className="relative py-24 flex justify-center">
+          <div className="w-full max-w-4xl px-4">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
             <MotionDiv
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -320,6 +315,7 @@ export default function TestimonialsPage() {
               Real feedback from clients who have experienced the quality and dedication I bring to every project
             </p>
           </MotionDiv>
+        </div>
         </div>
         
         {/* Animated background elements */}
@@ -352,8 +348,8 @@ export default function TestimonialsPage() {
 
       {/* Featured Testimonials */}
       <section className="py-20">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -379,8 +375,8 @@ export default function TestimonialsPage() {
 
       {/* Recent Testimonials */}
       <section className="py-20 bg-white/5 backdrop-blur-sm">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -406,8 +402,8 @@ export default function TestimonialsPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-[#1E1B4B] via-[#0F172A] to-[#1E293B] text-white">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
