@@ -72,7 +72,7 @@ const leadershipExperiences = [
     id: 1,
     title: 'President',
     organization: 'National Service Scheme (NSS)',
-            institution: 'St. Joseph's College',
+    institution: 'St. Joseph\'s College',
     duration: 'May 2021 – Aug 2022',
     category: 'Leadership & Social Impact',
     categoryColor: 'from-purple-500 to-pink-500',
