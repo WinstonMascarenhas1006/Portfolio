@@ -253,8 +253,8 @@ export default function SkillsPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="space-y-16">
               {filteredCategories.map((category, index) => (
                 <CategorySection
@@ -277,8 +277,8 @@ export default function SkillsPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="flex flex-col items-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Ready to Leverage These Skills?
