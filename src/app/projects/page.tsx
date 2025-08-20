@@ -282,8 +282,7 @@ export default function ProjectsPage() {
       <MotionSection
         className="py-16 lg:py-20"
         initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
+        animate="animate"
         variants={staggerContainer}
       >
         <div className="w-full px-4 sm:px-6 lg:px-8">
