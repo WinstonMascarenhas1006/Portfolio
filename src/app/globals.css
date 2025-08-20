@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove default margins and padding to eliminate white borders */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  height: 100%;
+  background: transparent;
+}
+
+/* Ensure no white background anywhere */
+* {
+  box-sizing: border-box;
+}
+
+/* Force gradient background on all major elements */
+html, body, div, nav, header, main, section, footer {
+  background-color: transparent !important;
+}
+
+/* Custom CSS for side navigation alignment */
+@media (min-width: 1024px) {
+  /* Add left margin to main content containers to prevent overlap with side nav */
+  .max-w-7xl {
+    margin-left: 6rem !important;
+  }
+  
+  /* Ensure proper spacing for all main content sections */
+  main .max-w-7xl,
+  main .mx-auto {
+    margin-left: 6rem !important;
+  }
+  
+  /* Specific adjustments for content sections (excluding hero) */
+  section:not(:first-child) .max-w-7xl,
+  section:not(:first-child) .mx-auto {
+    margin-left: 6rem !important;
+  }
+  
+  /* Hero section should be full width without left margin for background portrait */
+  section:first-child {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  /* Ensure text content doesn't overlap with sidebar icons - now on the left */
+  section:first-child .lg\:w-\[55\%\]:first-child {
+    padding-left: 6rem !important;
+  }
+}
+
+/* Ensure mobile content remains properly aligned */
+@media (max-width: 1023px) {
+  .max-w-7xl,
+  .mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Mobile portrait placement - full background */
+  section:first-child .lg\:w-\[55\%\]:first-child {
+    padding-left: 0 !important;
+  }
+}
+
+/* Custom scroll behavior for faster navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Override default smooth scroll for faster navigation */
+html {
+  scroll-behavior: auto;
+}
+
+/* Custom scroll behavior for specific elements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Fast scroll for navigation elements */
+.fast-scroll {
+  scroll-behavior: auto;
+}
+
+/* Ensure proper z-index layering */
+.side-nav {
+  z-index: 40;
+}
+
+.content-area {
+  z-index: 10;
+}
+
+/* Custom animations for faster interactions */
+.fast-transition {
+  transition-duration: 200ms;
+}
+
+.instant-transition {
+  transition-duration: 0ms;
+}
+
+:root {
+  --foreground-rgb: 180, 184, 197; /* ash-gray */
+  --background-start-rgb: 30, 12, 63; /* deep royal purple */
+  --background-middle-rgb: 44, 26, 99; /* indigo */
+  --background-end-rgb: 46, 67, 116; /* steel-indigo teal */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 180, 184, 197; /* ash-gray */
+    --background-start-rgb: 30, 12, 63; /* deep royal purple */
+    --background-middle-rgb: 44, 26, 99; /* indigo */
+    --background-end-rgb: 46, 67, 116; /* steel-indigo teal */
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      #1E0C3F 0%,
+      #1E0C3F 25%,
+      #2C1A63 50%,
+      #2C1A63 75%,
+      #2E4374 100%
+    );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar for the cinematic theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E0C3F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2C1A63;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2E4374;
+}
+
+/* Custom float animation for profile photo */
+@keyframes float {
+  0%, 100% {
+    transform: translateX(40%) translateY(0px);
+  }
+  50% {
+    transform: translateX(40%) translateY(-10px);
+  }
+}
+
+/* Path drawing animation for leadership journey */
+@keyframes draw {
+  from {
+    stroke-dasharray: 0 1000;
+  }
+  to {
+    stroke-dasharray: 1000 0;
+  }
+}
+
+.animate-draw {
+  animation: draw 2s ease-in-out forwards;
+  stroke-dasharray: 0 1000;
+}
+
+/* Image Protection Styles */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Prevent text selection */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection for specific elements */
+p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Disable context menu */
+* {
+  -webkit-context-menu: none;
+  -moz-context-menu: none;
+  -ms-context-menu: none;
+  context-menu: none;
+}
+
+/* Prevent drag and drop */
+* {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Disable image saving via CSS */
+img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+/* Prevent print styles */
+@media print {
+  * {
+    display: none !important;
+  }
+}
