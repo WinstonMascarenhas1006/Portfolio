@@ -187,13 +187,9 @@ function CheckpointNode({ experience, index, isExpanded, onToggle }: {
         {/* Button Indicator */}
         <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-1 bg-white/30 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
       </MotionDiv>
-
-             
     </div>
   )
 }
-
-
 
 export default function ExperiencePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -219,12 +215,12 @@ export default function ExperiencePage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24">
+        <div className="relative py-24 flex justify-center">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-4xl px-4"
           >
             <MotionDiv
               initial={{ scale: 0.8 }}
@@ -271,19 +267,21 @@ export default function ExperiencePage() {
         />
       </MotionSection>
 
-      {/* Category Filter */}
+      {/* Category Filter Section */}
       <MotionSection
-        className="py-16 bg-white/5 backdrop-blur-sm"
+        className="py-16 lg:py-20"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <MotionDiv variants={fadeInUp} className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Filter by Expertise Area</h2>
-              <p className="text-[#E0E0E0] text-center">Explore my experience across different technology domains</p>
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <MotionDiv variants={fadeInUp} className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Filter by Expertise Area</h2>
+              <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto">
+                Explore my experience across different technology domains
+              </p>
             </MotionDiv>
 
             <MotionDiv variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
@@ -311,16 +309,16 @@ export default function ExperiencePage() {
         </div>
       </MotionSection>
 
-      {/* Experience Timeline */}
+      {/* Experience Timeline Section */}
       <MotionSection
-        className="py-16 lg:py-20"
+        className="py-16 lg:py-20 bg-white/5 backdrop-blur-sm"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="space-y-16">
               {filteredExperiences.map((experience, index) => (
                 <MotionDiv
@@ -332,28 +330,28 @@ export default function ExperiencePage() {
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                     <div className="flex-1">
-                                             <div className="flex items-center gap-4 mb-4">
-                         {experience.company === 'Brillio' ? (
-                           <div className="w-16 h-16 rounded-xl flex items-center justify-center group">
-                             <img 
-                               src="/brillio.jpg" 
-                               alt="Brillio Logo" 
-                               className="w-16 h-16 rounded-xl shadow-lg group-hover:scale-105 group-hover:shadow-purple-500/30 transition-all duration-300"
-                               style={{
-                                 filter: 'drop-shadow(0 4px 8px rgba(139, 92, 246, 0.3))',
-                                 imageRendering: 'crisp-edges'
-                               }}
-                             />
-                           </div>
-                         ) : (
-                           <div className="w-16 h-16 bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] rounded-xl flex items-center justify-center">
-                             <Building2 className="w-8 h-8 text-white" />
-                           </div>
-                         )}
-                                                 <div className="flex-1">
-                           <div className="flex items-center gap-3 mb-2">
-                             <h3 className="text-xl md:text-2xl font-bold text-white">{experience.title}</h3>
-                           </div>
+                      <div className="flex items-center gap-4 mb-4">
+                        {experience.company === 'Brillio' ? (
+                          <div className="w-16 h-16 rounded-xl flex items-center justify-center group">
+                            <img 
+                              src="/brillio.jpg" 
+                              alt="Brillio Logo" 
+                              className="w-16 h-16 rounded-xl shadow-lg group-hover:scale-105 group-hover:shadow-purple-500/30 transition-all duration-300"
+                              style={{
+                                filter: 'drop-shadow(0 4px 8px rgba(139, 92, 246, 0.3))',
+                                imageRendering: 'crisp-edges'
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-16 h-16 bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] rounded-xl flex items-center justify-center">
+                            <Building2 className="w-8 h-8 text-white" />
+                          </div>
+                        )}
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h3 className="text-xl md:text-2xl font-bold text-white">{experience.title}</h3>
+                          </div>
                           <div className="flex items-center gap-4 text-[#E0E0E0] text-sm">
                             <div className="flex items-center gap-1">
                               <Building2 className="w-4 h-4" />
@@ -400,6 +398,50 @@ export default function ExperiencePage() {
         </div>
       </MotionSection>
 
+      {/* Skills Overview Section */}
+      <MotionSection
+        className="py-16 lg:py-20"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <MotionDiv variants={fadeInUp} className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Technical Skills</h2>
+              <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto">
+                Proficiency levels across key technical areas
+              </p>
+            </MotionDiv>
+
+            <MotionDiv variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {skills.map((skill, index) => (
+                <MotionDiv
+                  key={skill.name}
+                  variants={fadeInFromLeft}
+                  custom={index}
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6"
+                >
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="text-white font-medium">{skill.name}</h3>
+                    <span className="text-[#FF8C42] font-semibold">{skill.level}%</span>
+                  </div>
+                  <div className="w-full bg-white/10 rounded-full h-2">
+                    <MotionDiv
+                      className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] h-2 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1, delay: index * 0.1 }}
+                    />
+                  </div>
+                </MotionDiv>
+              ))}
+            </MotionDiv>
+          </div>
+        </div>
+      </MotionSection>
+
       {/* Leadership & Community Experience - Immersive Journey */}
       <MotionSection 
         className="py-24 relative overflow-hidden"
@@ -434,8 +476,8 @@ export default function ExperiencePage() {
           ))}
         </div>
 
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="relative z-10 flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Leadership Journey</h2>
               <MotionP 
@@ -447,14 +489,14 @@ export default function ExperiencePage() {
               </MotionP>
             </MotionDiv>
 
-                         {/* Flowing Path Container */}
-             <div className="relative min-h-96">
-               {/* Curved Path */}
-               <svg 
-                 className="absolute inset-0 w-full h-32 lg:h-40 pointer-events-none"
-                 viewBox="0 0 1200 160"
-                 preserveAspectRatio="none"
-               >
+            {/* Flowing Path Container */}
+            <div className="relative min-h-96">
+              {/* Curved Path */}
+              <svg 
+                className="absolute inset-0 w-full h-32 lg:h-40 pointer-events-none"
+                viewBox="0 0 1200 160"
+                preserveAspectRatio="none"
+              >
                 <defs>
                   <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#FF8C42" stopOpacity="0.3" />
@@ -480,139 +522,97 @@ export default function ExperiencePage() {
                 />
               </svg>
 
-                             {/* Checkpoint Nodes */}
-               <div className="relative z-10 flex justify-between items-center px-8 lg:px-16 mt-16">
-                 {leadershipExperiences.map((experience, index) => (
-                   <CheckpointNode 
-                     key={experience.id} 
-                     experience={experience} 
-                     index={index}
-                     isExpanded={expandedLeadership === experience.id}
-                     onToggle={() => setExpandedLeadership(expandedLeadership === experience.id ? null : experience.id)}
-                   />
-                 ))}
-               </div>
+              {/* Checkpoint Nodes */}
+              <div className="relative z-10 flex justify-between items-center px-8 lg:px-16 mt-16">
+                {leadershipExperiences.map((experience, index) => (
+                  <CheckpointNode 
+                    key={experience.id} 
+                    experience={experience} 
+                    index={index}
+                    isExpanded={expandedLeadership === experience.id}
+                    onToggle={() => setExpandedLeadership(expandedLeadership === experience.id ? null : experience.id)}
+                  />
+                ))}
+              </div>
 
-                               {/* Expanded Content Area */}
-                {expandedLeadership && (
-                  <MotionDiv
-                    className="mt-8 w-full max-w-4xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
-                    {(() => {
-                      const experience = leadershipExperiences.find(exp => exp.id === expandedLeadership)
-                      if (!experience) return null
-                      
-                      return (
-                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
-                                                     {/* Role Header */}
-                           <div className="flex items-start gap-6 mb-6">
-                                                                                         <div className={`w-16 h-16 bg-gradient-to-r ${experience.categoryColor} rounded-full flex items-center justify-center shadow-lg flex-shrink-0 overflow-hidden p-1`}>
-                                {experience.organization === 'National Service Scheme (NSS)' ? (
-                                  <img 
-                                    src="/NSS_logo.png" 
-                                    alt="NSS Logo" 
-                                    className="w-14 h-14 object-cover rounded-full"
-                                    style={{
-                                      imageRendering: 'crisp-edges'
-                                    }}
-                                  />
-                                ) : experience.organization === 'Mrityunjaya' ? (
-                                  <img 
-                                    src="/MRITYUNJAYA_logo.jpg" 
-                                    alt="Mrityunjaya Logo" 
-                                    className="w-14 h-14 object-cover rounded-full"
-                                    style={{
-                                      imageRendering: 'crisp-edges'
-                                    }}
-                                  />
-                                ) : (
-                                  <experience.icon className="w-10 h-10 text-white" />
-                                )}
-                              </div>
-                            <div className="flex-1">
-                              <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
-                              <h4 className="text-lg text-[#A5E9FF] font-semibold mb-1">{experience.organization}</h4>
-                              {experience.institution && <p className="text-[#E0E0E0] text-base mb-1">{experience.institution}</p>}
-                              <p className="text-[#E0E0E0] text-base opacity-80">{experience.duration}</p>
-                            </div>
-                            <button
-                              onClick={() => setExpandedLeadership(null)}
-                              className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200 flex-shrink-0"
-                            >
-                              <X className="w-5 h-5" />
-                            </button>
+              {/* Expanded Content Area */}
+              {expandedLeadership && (
+                <MotionDiv
+                  className="mt-8 w-full max-w-6xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  {(() => {
+                    const experience = leadershipExperiences.find(exp => exp.id === expandedLeadership)
+                    if (!experience) return null
+                    
+                    return (
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
+                        {/* Role Header */}
+                        <div className="flex items-start gap-6 mb-6">
+                          <div className={`w-16 h-16 bg-gradient-to-r ${experience.categoryColor} rounded-full flex items-center justify-center shadow-lg flex-shrink-0 overflow-hidden p-1`}>
+                            {experience.organization === 'National Service Scheme (NSS)' ? (
+                              <img 
+                                src="/NSS_logo.png" 
+                                alt="NSS Logo" 
+                                className="w-14 h-14 object-cover rounded-full"
+                                style={{
+                                  imageRendering: 'crisp-edges'
+                                }}
+                              />
+                            ) : experience.organization === 'Mrityunjaya' ? (
+                              <img 
+                                src="/MRITYUNJAYA_logo.jpg" 
+                                alt="Mrityunjaya Logo" 
+                                className="w-14 h-14 object-cover rounded-full"
+                                style={{
+                                  imageRendering: 'crisp-edges'
+                                }}
+                              />
+                            ) : (
+                              <experience.icon className="w-10 h-10 text-white" />
+                            )}
                           </div>
-
-                          {/* Category Badge */}
-                          <div className="mb-6">
-                            <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${experience.categoryColor} rounded-full text-white font-medium text-base shadow-md`}>
-                              {experience.category}
-                            </div>
+                          <div className="flex-1">
+                            <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
+                            <h4 className="text-lg text-[#A5E9FF] font-semibold mb-1">{experience.organization}</h4>
+                            {experience.institution && <p className="text-[#E0E0E0] text-base mb-1">{experience.institution}</p>}
+                            <p className="text-[#E0E0E0] text-base opacity-80">{experience.duration}</p>
                           </div>
+                          <button
+                            onClick={() => setExpandedLeadership(null)}
+                            className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200 flex-shrink-0"
+                          >
+                            <X className="w-5 h-5" />
+                          </button>
+                        </div>
 
-                          {/* Impact Moments */}
-                          <div className="space-y-4">
-                            <h5 className="text-white font-semibold text-lg mb-4">Impact Moments</h5>
-                            <div className="space-y-3">
-                              {experience.highlights.map((highlight: string, i: number) => (
-                                <div key={i} className="flex items-start gap-4">
-                                  <div className={`w-3 h-3 bg-gradient-to-r ${experience.categoryColor} rounded-full mt-2 flex-shrink-0`}></div>
-                                  <p className="text-[#E0E0E0] text-base leading-relaxed">{highlight}</p>
-                                </div>
-                              ))}
-                            </div>
+                        {/* Category Badge */}
+                        <div className="mb-6">
+                          <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${experience.categoryColor} rounded-full text-white font-medium text-base shadow-md`}>
+                            {experience.category}
                           </div>
                         </div>
-                      )
-                    })()}
-                  </MotionDiv>
-                )}
-            </div>
-          </div>
-        </div>
-      </MotionSection>
 
-      {/* Skills Overview */}
-      <MotionSection
-        className="py-24 bg-white/5 backdrop-blur-sm"
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <MotionDiv variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Skills & Expertise</h2>
-              <p className="text-xl text-[#E0E0E0] max-w-2xl mx-auto">
-                A comprehensive overview of my technical and professional skills developed through years of experience
-              </p>
-            </MotionDiv>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {skills.map((skill, index) => (
-                <MotionDiv
-                  key={skill.name}
-                  variants={fadeInUp}
-                  transition={{ ...smoothTransition, delay: index * 0.1 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-white">{skill.name}</h3>
-                    <span className="text-[#A5E9FF] font-medium">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-white/20 rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] h-2 rounded-full transition-all duration-1000 ease-out"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
+                        {/* Impact Moments */}
+                        <div className="space-y-4">
+                          <h5 className="text-white font-semibold text-lg mb-4">Impact Moments</h5>
+                          <div className="space-y-3">
+                            {experience.highlights.map((highlight: string, i: number) => (
+                              <div key={i} className="flex items-start gap-4">
+                                <div className={`w-3 h-3 bg-gradient-to-r ${experience.categoryColor} rounded-full mt-2 flex-shrink-0`}></div>
+                                <p className="text-[#E0E0E0] text-base leading-relaxed">{highlight}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })()}
                 </MotionDiv>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -635,35 +635,35 @@ export default function ExperiencePage() {
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             <div className="p-6">
-                             <div className="flex items-start justify-between mb-6">
-                 <div className="flex items-center gap-4">
-                   {selectedExperience.company === 'Brillio' && (
-                     <div className="flex-shrink-0 group">
-                       <img 
-                         src="/brillio.jpg" 
-                         alt="Brillio Logo" 
-                         className="w-12 h-12 md:w-14 md:h-14 rounded-lg shadow-lg group-hover:scale-105 group-hover:shadow-purple-500/30 transition-all duration-300"
-                         style={{
-                           filter: 'drop-shadow(0 4px 8px rgba(139, 92, 246, 0.3))',
-                           imageRendering: 'crisp-edges'
-                         }}
-                       />
-                     </div>
-                   )}
-                   <div>
-                     <h2 className="text-2xl font-bold text-white mb-2">{selectedExperience.title}</h2>
-                     <div className="flex items-center gap-4 text-[#E0E0E0] text-sm">
-                       <div className="flex items-center gap-1">
-                         <Building2 className="w-4 h-4" />
-                         {selectedExperience.company}
-                       </div>
-                       <div className="flex items-center gap-1">
-                         <MapPin className="w-4 h-4" />
-                         {selectedExperience.location}
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  {selectedExperience.company === 'Brillio' && (
+                    <div className="flex-shrink-0 group">
+                      <img 
+                        src="/brillio.jpg" 
+                        alt="Brillio Logo" 
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-lg shadow-lg group-hover:scale-105 group-hover:shadow-purple-500/30 transition-all duration-300"
+                        style={{
+                          filter: 'drop-shadow(0 4px 8px rgba(139, 92, 246, 0.3))',
+                          imageRendering: 'crisp-edges'
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h2 className="text-2xl font-bold text-white mb-2">{selectedExperience.title}</h2>
+                    <div className="flex items-center gap-4 text-[#E0E0E0] text-sm">
+                      <div className="flex items-center gap-1">
+                        <Building2 className="w-4 h-4" />
+                        {selectedExperience.company}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {selectedExperience.location}
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Button
                   variant="ghost"
                   size="sm"
