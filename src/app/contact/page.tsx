@@ -370,8 +370,8 @@ export default function ContactPage() {
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <MotionDiv variants={fadeInUp} className="text-center mb-16 lg:mb-20">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let&apos;s Connect</h2>
-              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl mx-auto">I&apos;m open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
+                              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let&apos;s Connect</h2>
+                              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl mx-auto">I&apos;m open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
             </MotionDiv>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
