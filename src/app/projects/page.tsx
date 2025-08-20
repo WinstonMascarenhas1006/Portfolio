@@ -212,13 +212,13 @@ export default function ProjectsPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center">
               <MotionH1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
                 Featured <span className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] bg-clip-text text-transparent">Projects</span>
               </MotionH1>
-              <MotionP variants={fadeInUp} className="text-xl lg:text-2xl text-[#E0E0E0] max-w-3xl mx-auto leading-relaxed">
+              <MotionP variants={fadeInUp} className="text-xl lg:text-2xl text-[#E0E0E0] max-w-3xl leading-relaxed">
                 A collection of projects showcasing my expertise in cybersecurity, cloud architecture, and full-stack development.
               </MotionP>
             </MotionDiv>
@@ -246,8 +246,8 @@ export default function ProjectsPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Filter by Category</h2>
               <p className="text-[#E0E0E0] text-center">Explore projects based on your interests and expertise areas</p>
@@ -285,8 +285,8 @@ export default function ProjectsPage() {
         animate="animate"
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <MotionDiv
@@ -389,6 +389,8 @@ export default function ProjectsPage() {
               ))}
             </div>
           </div>
+        </div>
+        </div>
         </div>
       </MotionSection>
 
