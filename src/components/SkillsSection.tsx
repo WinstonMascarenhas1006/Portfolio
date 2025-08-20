@@ -167,11 +167,12 @@ export default function SkillsSection() {
       animate={inView ? "animate" : "initial"}
       variants={staggerContainer}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 lg:ml-24">
-        <MotionDiv
-          variants={fadeInUp}
-          className="text-center mb-16 max-w-4xl mx-auto"
-        >
+      <div className="flex justify-center">
+        <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+          <MotionDiv
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
           <MotionH2
             variants={fadeInUp}
             className="text-3xl font-bold text-white mb-4"
@@ -180,15 +181,15 @@ export default function SkillsSection() {
           </MotionH2>
           <MotionP
             variants={fadeInUp}
-            className="text-xl text-[#E0E0E0] max-w-3xl mx-auto"
+            className="text-xl text-[#E0E0E0] max-w-3xl"
           >
             A comprehensive overview of my technical and professional skills developed through academic research and industry experience
           </MotionP>
-        </MotionDiv>
+          </MotionDiv>
 
         <MotionDiv
           variants={staggerContainer}
-          className="space-y-6 max-w-4xl mx-auto"
+          className="space-y-6"
         >
           {categories.map((category, index) => {
             const categorySkills = skillsData.filter(skill => skill.category === category.name)
@@ -205,6 +206,7 @@ export default function SkillsSection() {
             )
           })}
         </MotionDiv>
+        </div>
       </div>
     </MotionSection>
   )
