@@ -63,7 +63,7 @@ const education = [
   {
     year: '2017 – 2019',
     degree: 'Physics, Chemistry, Mathematics, Computer Science',
-    institution: 'St. Joseph\'s Pre-University College',
+            institution: 'St. Joseph's Pre-University College',
     type: 'pre-university',
     website: 'https://sjpuc.in',
     activities: ['Eco Club', 'Dance Club', 'Performing Arts', 'Literary Club'],
@@ -232,7 +232,7 @@ function EducationModal({ item, isOpen, onClose }: { item: any; isOpen: boolean;
             {item.institution === 'St Joseph\'s University' && (
               <img 
                 src="/sjc.jpg" 
-                                        alt="St Joseph&apos;s University Campus" 
+                                        alt="St. Joseph's University Campus" 
                 className="w-full h-full object-cover"
                 style={{
                   imageRendering: 'crisp-edges',
@@ -240,10 +240,10 @@ function EducationModal({ item, isOpen, onClose }: { item: any; isOpen: boolean;
                 }}
               />
             )}
-            {item.institution === 'St. Joseph\'s Pre-University College' && (
+                            {item.institution === 'St. Joseph's Pre-University College' && (
               <img 
                 src="/SJpuc.jpg" 
-                                        alt="St. Joseph&apos;s Pre-University College Campus" 
+                                        alt="St. Joseph's Pre-University College Campus" 
                 className="w-full h-full object-cover"
                 style={{
                   imageRendering: 'crisp-edges',
@@ -295,17 +295,17 @@ function EducationModal({ item, isOpen, onClose }: { item: any; isOpen: boolean;
                 {item.institution === 'St Joseph\'s University' && (
                   <img 
                     src="/sju_logo.png" 
-                                            alt="St Joseph&apos;s University Logo" 
+                                            alt="St. Joseph's University Logo" 
                     className="w-16 h-16 object-cover rounded-2xl"
                     style={{
                       imageRendering: 'crisp-edges'
                     }}
                   />
                 )}
-                {item.institution === 'St. Joseph\'s Pre-University College' && (
+                {item.institution === 'St. Joseph's Pre-University College' && (
                   <img 
                     src="/sjpuc_logo.jpg" 
-                                            alt="St. Joseph&apos;s Pre-University College Logo" 
+                                            alt="St. Joseph's Pre-University College Logo" 
                     className="w-16 h-16 object-cover rounded-2xl"
                     style={{
                       imageRendering: 'crisp-edges'
@@ -590,13 +590,13 @@ export default function AboutPage() {
                   <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">My Story</h2>
                   <div className="space-y-6 text-[#E0E0E0] leading-relaxed">
                     <p>
-                      I&apos;m a cybersecurity enthusiast and cloud architect with a passion for building secure, scalable solutions. My journey in technology began with a curiosity about how systems work and evolved into a deep understanding of security principles and cloud infrastructure.
+                      I'm a cybersecurity enthusiast and cloud architect with a passion for building secure, scalable solutions. My journey in technology began with a curiosity about how systems work and evolved into a deep understanding of security principles and cloud infrastructure.
                     </p>
                     <p>
-                      Currently based in Ilmenau, Germany, I&apos;m pursuing opportunities that allow me to apply my expertise in cybersecurity, cloud computing, and full-stack development to solve real-world challenges.
+                      Currently based in Ilmenau, Germany, I'm pursuing opportunities that allow me to apply my expertise in cybersecurity, cloud computing, and full-stack development to solve real-world challenges.
                     </p>
                     <p>
-                      I believe in the power of technology to create positive change, and I&apos;m committed to building solutions that not only meet technical requirements but also prioritize security and user experience.
+                      I believe in the power of technology to create positive change, and I'm committed to building solutions that not only meet technical requirements but also prioritize security and user experience.
                     </p>
                   </div>
                 </div>
