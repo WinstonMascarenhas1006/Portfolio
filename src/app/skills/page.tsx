@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import { 
   MotionDiv, 
@@ -285,13 +286,17 @@ export default function SkillsPage() {
                 Let&apos;s discuss how we can collaborate on your next project.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button size="lg" variant="secondary" className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] text-white hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90">
-                  <TrendingUp className="w-5 h-5 mr-2" />
-                  View Projects
+                <Button asChild size="lg" variant="secondary" className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] text-white hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90">
+                  <Link href="/projects">
+                    <TrendingUp className="w-5 h-5 mr-2" />
+                    View Projects
+                  </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-deep-navy">
-                  <Globe className="w-5 h-5 mr-2" />
-                  Get in Touch
+                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-deep-navy">
+                  <Link href="/contact">
+                    <Globe className="w-5 h-5 mr-2" />
+                    Get in Touch
+                  </Link>
                 </Button>
               </div>
             </MotionDiv>
