@@ -276,8 +276,8 @@ export default function HomePage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <StatsCard key={stat.label} stat={stat} index={index} />
@@ -303,8 +303,8 @@ export default function HomePage() {
          {/* Subtle gradient divider */}
          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-[#FF8C42] to-transparent opacity-30"></div>
          
-         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
-           <div className="max-w-4xl mx-auto">
+         <div className="flex justify-center relative z-10">
+           <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
              <MotionDiv
                variants={fadeInUp}
                className="text-center mb-20"
@@ -323,8 +323,8 @@ export default function HomePage() {
                </div>
              </MotionDiv>
 
-                           <div className="w-full px-4 sm:px-6 lg:px-8">
-                <div className="max-w-5xl mx-auto">
+                           <div className="flex justify-center">
+                <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8">
                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
                      {skills.map((skill, index) => (
                        <div key={skill.name} className="w-full h-80">
