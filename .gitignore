@@ -41,3 +41,10 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Test files (development only)
+test-api.ps1
+test-consent-api.js
+
+# Build cache
+tsconfig.tsbuildinfo
