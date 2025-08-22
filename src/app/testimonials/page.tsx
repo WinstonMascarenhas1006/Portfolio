@@ -205,9 +205,15 @@ export default function TestimonialsPage() {
 
             {/* Testimonial Text */}
             <div className="mb-4 flex-1">
-              <p className={`text-[#E0E0E0] text-sm leading-relaxed ${isExpanded ? '' : 'line-clamp-4'}`}>
-                {isExpanded ? testimonial.fullTestimonial : testimonial.shortTestimonial}
-              </p>
+              {isExpanded ? (
+                <p className="text-[#E0E0E0] text-sm leading-relaxed">
+                  {testimonial.fullTestimonial}
+                </p>
+              ) : (
+                <p className="text-[#E0E0E0] text-sm leading-relaxed line-clamp-4">
+                  {testimonial.shortTestimonial}
+                </p>
+              )}
             </div>
 
             {/* Keywords Badges */}
