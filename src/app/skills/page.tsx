@@ -191,14 +191,13 @@ export default function SkillsPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative w-full px-4 sm:px-6 lg:px-8 py-24">
-          <div className="max-w-7xl mx-auto">
-            <MotionDiv
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl mx-auto"
-            >
+        <div className="relative container mx-auto px-4 py-24">
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto"
+          >
             <MotionDiv
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -253,7 +252,7 @@ export default function SkillsPage() {
         variants={staggerContainer}
       >
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="space-y-16">
               {filteredCategories.map((category, index) => (
                 <CategorySection
@@ -283,8 +282,8 @@ export default function SkillsPage() {
                 Ready to Leverage These Skills?
               </h2>
               <p className="text-xl text-[#E0E0E0] mb-8 max-w-2xl mx-auto">
-                I'm always expanding my skill set and staying current with emerging technologies. 
-                Let's discuss how we can collaborate on your next project.
+                I&apos;m always expanding my skill set and staying current with emerging technologies. 
+                Let&apos;s discuss how we can collaborate on your next project.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button asChild size="lg" variant="secondary" className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] text-white hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90">
@@ -302,7 +301,6 @@ export default function SkillsPage() {
               </div>
             </MotionDiv>
           </div>
-        </div>
         </div>
       </MotionSection>
     </div>

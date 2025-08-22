@@ -417,7 +417,7 @@ export default function TestimonialsPage() {
                 Ready to Join My Success Stories?
               </h2>
               <p className="text-xl text-[#E0E0E0] mb-8 max-w-2xl mx-auto">
-                Let's work together to create your next success story. I'm ready to bring the same 
+                Let&apos;s work together to create your next success story. I&apos;m ready to bring the same 
                 dedication and expertise to your project.
               </p>
               <div className="flex justify-center">
