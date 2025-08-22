@@ -91,14 +91,18 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
       
       localStorage.setItem('visitorConsent', JSON.stringify(visitorData))
       
-      // Send visitor data to your backend (optional)
-      await fetch('/api/visitor-consent', {
+      // Send visitor data to your backend (this will also store in server-side session)
+      const response = await fetch('/api/visitor-consent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(visitorData),
       })
+
+      if (!response.ok) {
+        throw new Error('Failed to save consent to server')
+      }
 
       // Show success animation
       setShowSuccess(true)
@@ -110,7 +114,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
       
     } catch (error) {
       console.error('Error saving visitor consent:', error)
-      // Still allow access even if backend fails
+      // Still allow access even if backend fails, but show warning
       setShowSuccess(true)
       setTimeout(() => {
         onConsent(formData)

@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { cookies } from 'next/headers'
 
 // Ensure this route runs on the Node.js runtime
 export const runtime = 'nodejs'
+
+// In-memory store for demo purposes (use Redis or database in production)
+const consentStore = new Map<string, any>()
+const ipConsentStore = new Map<string, any>()
 
 export async function POST(request: NextRequest) {
   try {
@@ -99,6 +104,19 @@ export async function POST(request: NextRequest) {
 
     // Log visitor data (in production, you might want to store this in a database)
     console.log(`New visitor consent: ${sanitizedName} from ${sanitizedCompany} (${sanitizedEmail}) - IP: ${clientIP}`)
+
+    // Store consent in server-side session for cross-browser/device tracking
+    const cookieStore = cookies()
+    const sessionId = cookieStore.get('visitor-session')?.value
+    
+    if (sessionId) {
+      consentStore.set(sessionId, visitorData)
+      console.log(`Consent stored in session: ${sessionId}`)
+    }
+
+    // Also store IP-based consent for same device, different browsers
+    ipConsentStore.set(clientIP, visitorData)
+    console.log(`Consent stored for IP: ${clientIP}`)
 
     // Send email notification to winstonmascarenhasjobs@gmail.com
     try {
