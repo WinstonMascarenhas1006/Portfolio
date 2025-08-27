@@ -57,8 +57,10 @@ html, body, div, nav, header, main, section, footer {
 @media (max-width: 1023px) {
   /* Improve photo visibility on mobile */
   .hero-portrait {
-    opacity: 0.3 !important;
-    filter: brightness(0.8) contrast(1.2) !important;
+    opacity: 0.4 !important;
+    filter: brightness(0.9) contrast(1.1) !important;
+    transform: translateX(20%) !important; /* Move photo more into view on mobile */
+    object-position: 80% 25% !important; /* Adjust position for mobile */
   }
   
   /* Better text contrast on mobile */
@@ -83,6 +85,23 @@ html, body, div, nav, header, main, section, footer {
   .modal-content {
     max-height: 90vh !important;
     overflow-y: auto !important;
+  }
+  
+  /* Mobile photo visibility improvements */
+  .mobile-photo {
+    opacity: 1 !important;
+    filter: brightness(1.05) contrast(1.02) saturate(1.08) !important;
+    box-shadow: 0 0 30px rgba(255, 140, 66, 0.3) !important;
+    animation: mobilePhotoGlow 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes mobilePhotoGlow {
+    0% {
+      box-shadow: 0 0 30px rgba(255, 140, 66, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 40px rgba(255, 140, 66, 0.5);
+    }
   }
 }
 
