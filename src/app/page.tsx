@@ -185,16 +185,16 @@ export default function HomePage() {
                  {/* Portrait Background Layer - Clean and modern with bottom blending */}
          <div className="absolute inset-0 w-full h-full z-10">
            <div className="relative w-full h-full">
-                                                                                                               <img
-                  src="/winston.png"
-                  alt="Winston Mascarenhas"
-                  className="w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
-                  style={{
-                    objectPosition: '100% 25%',
-                    transform: 'translateX(40%)',
-                    filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
-                  }}
-                />
+             <img
+               src="/winston.png"
+               alt="Winston Mascarenhas"
+               className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
+               style={{
+                 objectPosition: '100% 25%',
+                 transform: 'translateX(40%)',
+                 filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
+               }}
+             />
              {/* Bottom gradient mask for seamless blending */}
              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent pointer-events-none"></div>
              {/* Additional soft blur overlay for extra blending */}
@@ -207,19 +207,19 @@ export default function HomePage() {
           {/* Left Side - Text Content */}
           <MotionDiv
             variants={fadeInUp}
-            className="relative w-full lg:w-[60%] flex items-center justify-center lg:justify-center px-8 lg:px-20 xl:px-24 z-10 py-12 lg:py-0"
+            className="relative w-full lg:w-[60%] flex items-center justify-center lg:justify-center px-4 sm:px-8 lg:px-20 xl:px-24 z-10 py-8 sm:py-12 lg:py-0"
           >
             <div className="max-w-xl text-center lg:text-center mx-auto">
               <MotionDiv variants={fadeInUp} className="mb-8">
                 {/* "My name is Winston Mascarenhas" - Bold typography with split colors */}
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight drop-shadow-lg tracking-tight">
+                <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight drop-shadow-lg tracking-tight">
                   <div className="text-white drop-shadow-lg">My name is</div>
-                  <div className="mt-4">
+                  <div className="mt-2 sm:mt-4">
                     <span className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] bg-clip-text text-transparent drop-shadow-lg">
                       Winston
                     </span>
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-1 sm:mt-2">
                     <span className="text-white drop-shadow-lg">
                       Mascarenhas
                     </span>
@@ -227,7 +227,7 @@ export default function HomePage() {
                 </h1>
                  
                  {/* Subtitle - Clean white for readability */}
-                 <h3 className="text-xl lg:text-2xl xl:text-3xl font-medium text-[#A5E9FF] mb-8 drop-shadow-lg tracking-wide">
+                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-medium text-[#A5E9FF] mb-6 sm:mb-8 drop-shadow-lg tracking-wide">
                    Cybersecurity Enthusiast & Cloud Architect
                  </h3>
               </MotionDiv>
@@ -235,7 +235,7 @@ export default function HomePage() {
               {/* Description - Clean, minimalist body text */}
               <MotionP
                 variants={fadeInUp}
-                className="text-lg lg:text-xl text-[#E0E0E0] leading-relaxed mb-12 max-w-lg drop-shadow-lg tracking-wide"
+                className="text-base sm:text-lg lg:text-xl text-[#E0E0E0] leading-relaxed mb-8 sm:mb-12 max-w-lg drop-shadow-lg tracking-wide"
               >
                 I build secure, scalable, and resilient cloud solutions that drive innovation and protect digital assets.
               </MotionP>
@@ -243,16 +243,16 @@ export default function HomePage() {
               {/* Modern Download Resume button */}
               <MotionDiv
                 variants={fadeInUp}
-                className="flex justify-center lg:justify-center mt-8"
+                className="flex justify-center lg:justify-center mt-6 sm:mt-8"
               >
                 <MotionDiv {...hoverScale}>
                   <Button 
                     asChild 
                     size="lg" 
-                    className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white border border-[#FF8C42]/30 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-bold px-12 py-6 text-xl rounded-full drop-shadow-lg"
+                    className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white border border-[#FF8C42]/30 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-bold px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl rounded-full drop-shadow-lg"
                   >
                     <Link href="/Winston Mascarenhas_Resume.pdf" target="_blank">
-                      <Download className="mr-4 h-7 w-7" />
+                      <Download className="mr-2 sm:mr-4 h-5 w-5 sm:h-7 sm:w-7" />
                       Download Resume
                     </Link>
                   </Button>

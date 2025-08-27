@@ -325,13 +325,13 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
           className="relative w-full max-w-md"
         >
           {/* Glassmorphism Card */}
-          <div className="relative bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+          <div className="modal-content relative bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden w-full max-w-md mx-4">
             {/* Neon Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C42]/20 via-[#FF5E78]/20 to-[#4F46E5]/20 rounded-3xl blur-xl" />
             <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C42]/10 via-transparent to-[#4F46E5]/10 rounded-3xl" />
             
             {/* Content */}
-            <div className="relative p-8">
+            <div className="relative p-4 sm:p-6 lg:p-8">
               {/* Brand Logo */}
               <div className="absolute top-6 right-6">
                 <div className="w-10 h-10 bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] rounded-xl flex items-center justify-center">
@@ -379,7 +379,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
               ) : (
                 <>
                   {/* Form */}
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                     {/* Name Field */}
                     <MotionDiv
                       initial={{ opacity: 0, x: -20 }}
@@ -397,7 +397,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
                onChange={(e) => handleInputChange('name', e.target.value)}
                placeholder="Enter your full name"
                required
-               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 ${
+               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 text-base sm:text-sm ${
                  errors.name ? 'border-red-500 shake' : ''
                }`}
              />
@@ -431,7 +431,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
                onChange={(e) => handleInputChange('company', e.target.value)}
                placeholder="Enter your company or organization"
                required
-               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 ${
+               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 text-base sm:text-sm ${
                  errors.company ? 'border-red-500 shake' : ''
                }`}
              />
@@ -465,7 +465,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
                onChange={(e) => handleInputChange('email', e.target.value)}
                placeholder="Enter your email address"
                required
-               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 ${
+               className={`bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-[#FF8C42] focus:ring-[#FF8C42]/20 transition-all duration-300 text-base sm:text-sm ${
                  errors.email ? 'border-red-500 shake' : ''
                }`}
              />
@@ -491,7 +491,7 @@ export default function VisitorConsentModal({ onConsent }: VisitorConsentModalPr
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-[#FF8C42] via-[#FF5E78] to-[#4F46E5] text-white font-semibold py-4 rounded-2xl hover:scale-105 hover:shadow-lg hover:shadow-[#FF8C42]/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                        className="w-full bg-gradient-to-r from-[#FF8C42] via-[#FF5E78] to-[#4F46E5] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:scale-105 hover:shadow-lg hover:shadow-[#FF8C42]/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-base sm:text-lg"
                       >
                         {isSubmitting ? (
                           <div className="flex items-center gap-3">
