@@ -185,16 +185,16 @@ export default function HomePage() {
                  {/* Portrait Background Layer - Clean and modern with bottom blending */}
          <div className="absolute inset-0 w-full h-full z-10">
            <div className="relative w-full h-full">
-             <img
-               src="/winston.png"
-               alt="Winston Mascarenhas"
-               className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110 hidden lg:block"
-               style={{
-                 objectPosition: '100% 25%',
-                 transform: 'translateX(40%)',
-                 filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
-               }}
-             />
+                           <img
+                src="/winston.png"
+                alt="Winston Mascarenhas"
+                className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
+                style={{
+                  objectPosition: '100% 25%',
+                  transform: 'translateX(40%)',
+                  filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
+                }}
+              />
              {/* Bottom gradient mask for seamless blending */}
              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent pointer-events-none"></div>
              {/* Additional soft blur overlay for extra blending */}
@@ -261,25 +261,10 @@ export default function HomePage() {
             </div>
           </MotionDiv>
 
-          {/* Right Side - Photo space */}
-          <div className="relative w-full lg:w-[40%] h-full flex items-center justify-center lg:justify-end px-8 lg:px-0">
-            {/* Mobile Photo Display */}
-            <div className="lg:hidden absolute inset-0 flex items-center justify-center">
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
-                                 <img
-                   src="/winston.png"
-                   alt="Winston Mascarenhas"
-                   className="mobile-photo w-full h-full object-cover object-center"
-                   style={{
-                     filter: 'brightness(105%) contrast(102%) saturate(108%)'
-                   }}
-                 />
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C42]/20 to-[#FF5E78]/20 rounded-full blur-xl"></div>
-              </div>
-            </div>
-            {/* Desktop: This space ensures the photo appears on the right side */}
-          </div>
+                     {/* Right Side - Photo space */}
+           <div className="relative w-full lg:w-[40%] h-full flex items-center justify-center lg:justify-end px-8 lg:px-0">
+             {/* This space ensures the photo appears on the right side */}
+           </div>
         </div>
       </MotionSection>
 
