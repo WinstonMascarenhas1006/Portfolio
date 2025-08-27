@@ -60,6 +60,17 @@ This document outlines the comprehensive protection measures implemented to prev
 - Detects potential screenshot tools
 - Logs suspicious activity
 
+#### **Enhanced Mobile Screenshot Protection** 🆕
+- **Visibility Change Detection**: Monitors page visibility changes
+- **Focus Change Detection**: Detects when page loses/gains focus
+- **Orientation Change Monitoring**: Detects screen rotation
+- **Window Resize Detection**: Monitors for screenshot app interference
+- **Touch Gesture Monitoring**: Detects long-press screenshot attempts
+- **Hardware Button Detection**: Attempts to detect volume+power combinations
+- **Visual Deterrent Overlay**: Shows warning messages on detection
+- **Progressive Protection**: Increases protection level with repeated attempts
+- **Real-time Monitoring**: Continuous screenshot attempt detection
+
 ### 2. CSS-Based Protection (`globals.css`)
 
 #### User Selection Prevention
@@ -118,6 +129,35 @@ img, video, canvas, svg {
 }
 ```
 
+#### **Enhanced Mobile CSS Protection** 🆕
+```css
+@media (max-width: 768px) {
+  /* Visual deterrent badge */
+  body::before {
+    content: "📱 Screenshot Protected";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    z-index: 1000000;
+  }
+  
+  /* Protection overlay */
+  body::after {
+    background: linear-gradient(45deg, transparent 49%, rgba(255, 0, 0, 0.01) 50%, transparent 51%);
+    background-size: 20px 20px;
+    z-index: 999999;
+  }
+  
+  /* Enhanced mobile gestures */
+  * {
+    -webkit-touch-manipulation: none !important;
+    touch-action: none !important;
+  }
+}
+```
+
 ## 🚀 How It Works
 
 ### Multi-Layer Protection
@@ -125,13 +165,14 @@ img, video, canvas, svg {
 2. **CSS Protection**: Prevents visual capture and user interactions
 3. **Event Monitoring**: Continuously monitors for suspicious activity
 4. **Real-time Detection**: Detects and responds to capture attempts
+5. **Mobile-Specific Protection**: Enhanced detection for mobile devices
 
 ### Browser Compatibility
 - **Chrome/Chromium**: Full protection
 - **Firefox**: Full protection
 - **Safari**: Full protection
 - **Edge**: Full protection
-- **Mobile Browsers**: Full protection
+- **Mobile Browsers**: Enhanced protection
 
 ## ⚠️ Limitations
 
@@ -144,14 +185,44 @@ img, video, canvas, svg {
 - Basic screen recording software
 - Voice assistant screenshot commands
 - Print screen attempts
+- **Mobile screenshot attempts** (enhanced protection)
+- **Hardware button combinations** (partial detection)
+- **Long-press gestures** (mobile detection)
 
 ### What This Cannot Protect Against
 - **Hardware-level screenshots**: Physical camera photos
 - **Advanced screen recording**: Professional recording software
 - **Browser extensions**: Some specialized extensions
 - **OS-level tools**: System screenshot utilities
-- **Mobile device screenshots**: Native mobile screenshot features
+- **Native mobile screenshots**: Hardware button combinations (volume+power)
 - **Virtual machines**: Screenshots from VM software
+
+## 📱 **Enhanced Mobile Protection** 🆕
+
+### Mobile-Specific Features
+- **Visual Deterrent Badge**: Shows "📱 Screenshot Protected" on mobile
+- **Protection Overlay**: Subtle gradient overlay to deter screenshots
+- **Touch Gesture Monitoring**: Detects long-press screenshot attempts
+- **Orientation Change Detection**: Monitors screen rotation
+- **Focus/Visibility Monitoring**: Detects app switching
+- **Progressive Warnings**: Shows stronger warnings with repeated attempts
+- **Hardware Button Detection**: Attempts to detect volume+power combinations
+- **Real-time Monitoring**: Continuous detection of screenshot attempts
+
+### Mobile Detection Methods
+1. **Visibility API**: Detects when page becomes hidden
+2. **Focus Events**: Monitors page focus changes
+3. **Orientation Changes**: Detects screen rotation
+4. **Window Resize**: Monitors for screenshot app interference
+5. **Touch Duration**: Detects long-press gestures
+6. **Media Session**: Attempts hardware button detection
+7. **Periodic Checks**: Continuous monitoring of window dimensions
+
+### Mobile Limitations
+- **Native mobile screenshots** may still work (hardware limitation)
+- **Hardware buttons** (volume + power) bypass some protection
+- **Some mobile browsers** have different security models
+- **Advanced screenshot apps** might bypass detection
 
 ## 🔧 Customization
 
@@ -181,18 +252,12 @@ const additionalProtection = () => {
 }
 ```
 
-## 📱 Mobile Protection
-
-### Mobile-Specific Features
-- Touch callout prevention
-- Tap highlight removal
-- Mobile screenshot detection
-- Voice assistant blocking
-
-### Mobile Limitations
-- Native mobile screenshots may still work
-- Some mobile browsers have different security models
-- Hardware buttons (volume + power) bypass protection
+### Mobile Protection Customization
+```typescript
+// Adjust mobile detection sensitivity
+const threshold = 3 // Increase from 2 for fewer false positives
+const touchDuration = 1500 // Increase from 1000ms for long-press detection
+```
 
 ## 🛠️ Troubleshooting
 
@@ -219,6 +284,7 @@ input, textarea, button, a {
 **Solution**: Adjust detection thresholds:
 ```typescript
 const threshold = 200 // Increase from 160
+const screenshotAttempts = 5 // Increase from 2
 ```
 
 #### Performance Impact
@@ -228,6 +294,17 @@ const threshold = 200 // Increase from 160
 **Solution**: Optimize intervals:
 ```typescript
 setInterval(detectDevTools, 1000) // Increase from 500ms
+setInterval(mobileDetection, 2000) // Increase from 1000ms
+```
+
+#### Mobile False Positives
+- Normal app switching triggers warnings
+- Legitimate touch gestures blocked
+
+**Solution**: Adjust mobile detection:
+```typescript
+const touchDuration = 2000 // Increase long-press threshold
+const visibilityThreshold = 5 // Increase visibility change tolerance
 ```
 
 ## 🔒 Security Best Practices
@@ -245,6 +322,12 @@ setInterval(detectDevTools, 1000) // Increase from 500ms
 3. **Dynamic loading**: Load content progressively
 4. **Session-based access**: Time-limited content access
 
+### Mobile-Specific Strategy
+1. **Visual deterrents**: Show protection badges
+2. **Progressive warnings**: Escalate protection with attempts
+3. **Touch gesture blocking**: Prevent screenshot gestures
+4. **Hardware detection**: Monitor for button combinations
+
 ## 📊 Monitoring & Analytics
 
 ### What to Monitor
@@ -253,6 +336,9 @@ setInterval(detectDevTools, 1000) // Increase from 500ms
 - Screen recording alerts
 - Voice assistant requests
 - Protection bypass attempts
+- **Mobile screenshot attempts** 🆕
+- **Touch gesture violations** 🆕
+- **Hardware button detection** 🆕
 
 ### Analytics Integration
 ```typescript
@@ -261,16 +347,31 @@ const logProtectionEvent = (event: string) => {
   // Send to analytics service
   console.log(`Protection triggered: ${event}`)
 }
+
+// Mobile-specific logging
+const logMobileProtectionEvent = (event: string, device: string) => {
+  console.log(`Mobile protection: ${event} on ${device}`)
+}
 ```
 
 ## 🎯 Conclusion
 
-This comprehensive protection system provides multiple layers of defense against common screenshot and screen recording attempts. While no solution is 100% foolproof, this implementation significantly raises the barrier for unauthorized content capture while maintaining a good user experience for legitimate visitors.
+This comprehensive protection system provides multiple layers of defense against common screenshot and screen recording attempts, with **enhanced mobile protection** that significantly improves protection on mobile devices.
+
+While no solution is 100% foolproof, this implementation significantly raises the barrier for unauthorized content capture while maintaining a good user experience for legitimate visitors.
 
 The protection is designed to be:
 - **Non-intrusive**: Doesn't affect normal browsing
-- **Comprehensive**: Covers multiple attack vectors
+- **Comprehensive**: Covers multiple attack vectors including mobile
 - **Maintainable**: Easy to update and customize
 - **Performance-friendly**: Minimal impact on page load times
+- **Mobile-optimized**: Enhanced protection for mobile devices
+
+**Key Mobile Improvements:**
+- Visual deterrent badges
+- Touch gesture monitoring
+- Hardware button detection attempts
+- Progressive warning system
+- Real-time mobile monitoring
 
 Remember that the goal is to deter casual attempts while not making the site unusable for legitimate users.
