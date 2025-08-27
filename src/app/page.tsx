@@ -188,7 +188,7 @@ export default function HomePage() {
              <img
                src="/winston.png"
                alt="Winston Mascarenhas"
-               className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
+               className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110 hidden lg:block"
                style={{
                  objectPosition: '100% 25%',
                  transform: 'translateX(40%)',
@@ -263,7 +263,22 @@ export default function HomePage() {
 
           {/* Right Side - Photo space */}
           <div className="relative w-full lg:w-[40%] h-full flex items-center justify-center lg:justify-end px-8 lg:px-0">
-            {/* This space ensures the photo appears on the right side */}
+            {/* Mobile Photo Display */}
+            <div className="lg:hidden absolute inset-0 flex items-center justify-center">
+              <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+                                 <img
+                   src="/winston.png"
+                   alt="Winston Mascarenhas"
+                   className="mobile-photo w-full h-full object-cover object-center"
+                   style={{
+                     filter: 'brightness(105%) contrast(102%) saturate(108%)'
+                   }}
+                 />
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C42]/20 to-[#FF5E78]/20 rounded-full blur-xl"></div>
+              </div>
+            </div>
+            {/* Desktop: This space ensures the photo appears on the right side */}
           </div>
         </div>
       </MotionSection>
