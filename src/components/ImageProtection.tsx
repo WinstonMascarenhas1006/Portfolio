@@ -314,21 +314,6 @@ export default function ImageProtection() {
       }
     }
 
-    // Screen recording detection
-    const detectScreenRecording = async () => {
-      try {
-        // Check if screen recording is active
-        const stream = await navigator.mediaDevices.getDisplayMedia({ video: true })
-        if (stream) {
-          // Screen recording detected
-          alert('Screen recording detected! This content is protected.')
-          stream.getTracks().forEach(track => track.stop())
-        }
-      } catch (error) {
-        // No screen recording active
-      }
-    }
-
     // Voice assistant screenshot protection
     const preventVoiceAssistantScreenshots = () => {
       // Detect common voice assistant user agents
@@ -436,9 +421,6 @@ export default function ImageProtection() {
     preventVoiceAssistantScreenshots()
     const mobileCleanup = enhanceMobileScreenshotProtection()
 
-    // Periodic screen recording detection
-    const recordingInterval = setInterval(detectScreenRecording, 5000)
-
     // Disable text selection on images
     const disableImageSelection = () => {
       const images = document.querySelectorAll('img')
@@ -472,7 +454,6 @@ export default function ImageProtection() {
       })
       
       clearInterval(interval)
-      clearInterval(recordingInterval)
       
       // Cleanup mobile protection
       if (mobileCleanup) {
