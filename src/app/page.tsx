@@ -190,8 +190,8 @@ export default function HomePage() {
                 alt="Winston Mascarenhas"
                 className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
                 style={{
-                  objectPosition: '85% 25%',
-                  transform: 'translateX(25%)',
+                  objectPosition: '99% 25%',
+                  transform: 'translateX(45%)',
                   filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
                 }}
               />
