@@ -184,14 +184,14 @@ export default function HomePage() {
         
                  {/* Portrait Background Layer - Clean and modern with bottom blending */}
          <div className="absolute inset-0 w-full h-full z-10">
-           <div className="relative w-full h-full">
+           <div className="relative w-full h-full" style={{ transform: 'translateX(220px)' }}>
                            <img
                 src="/winston.png"
                 alt="Winston Mascarenhas"
                 className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
                 style={{
                   objectPosition: '100% 25%',
-                  transform: 'translateX(700px)',
+                  transform: 'translateX(0px)',
                   filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
                 }}
               />
