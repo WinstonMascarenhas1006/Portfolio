@@ -22,34 +22,9 @@ html, body, div, nav, header, main, section, footer {
   background-color: transparent !important;
 }
 
-/* Custom CSS for side navigation alignment */
-@media (min-width: 1024px) {
-  /* Add left margin to main content containers to prevent overlap with side nav */
-  .max-w-7xl {
-    margin-left: 6rem !important;
-  }
-  
-  /* Ensure proper spacing for all main content sections */
-  main .max-w-7xl,
-  main .mx-auto {
-    margin-left: 6rem !important;
-  }
-  
-  /* Specific adjustments for content sections (excluding hero) */
-  section:not(:first-child) .max-w-7xl,
-  section:not(:first-child) .mx-auto {
-    margin-left: 6rem !important;
-  }
-  
-  /* Hero section should be full width without left margin for background portrait */
-  section:first-child {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-  }
-  
-  /* Ensure text content doesn't overlap with sidebar icons - now on the left */
-  section:first-child .lg\:w-\[55\%\]:first-child {
-    padding-left: 6rem !important;
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
 
@@ -86,31 +61,14 @@ html, body, div, nav, header, main, section, footer {
     max-height: 90vh !important;
     overflow-y: auto !important;
   }
-  
 }
 
-/* Ensure mobile content remains properly aligned */
-@media (max-width: 1023px) {
-  .max-w-7xl,
-  .mx-auto {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  
-  /* Mobile portrait placement - full background */
-  section:first-child .lg\:w-\[55\%\]:first-child {
-    padding-left: 0 !important;
-  }
-}
-
-/* Custom scroll behavior for faster navigation */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Override default smooth scroll for faster navigation */
-html {
-  scroll-behavior: auto;
+/* Center page content site-wide */
+.page-container,
+.max-w-7xl,
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Custom scroll behavior for specific elements */
