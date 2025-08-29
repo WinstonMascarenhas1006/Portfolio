@@ -54,9 +54,9 @@ const contactMethods = [
   {
     icon: MapPin,
     title: 'Location',
-    value: 'Ilmenau, Germany',
+    value: 'Stuttgart, Germany',
     description: 'Open to roles across Germany & EU',
-    action: 'https://maps.google.com/?q=Ilmenau,Germany',
+    action: 'https://maps.google.com/?q=Stuttgart,Germany',
     color: 'from-purple-500 to-pink-500',
     priority: 'secondary'
   },
@@ -639,7 +639,7 @@ export default function ContactPage() {
                       <div>
                         <h3 className="text-white font-semibold mb-2">Location</h3>
                         <p className="text-[#E0E0E0]">
-                          <span className="text-[#A5E9FF] font-medium">Ilmenau, Germany</span> - Open to opportunities in Germany and remote positions worldwide.
+                          <span className="text-[#A5E9FF] font-medium">Stuttgart, Germany</span> - Open to opportunities in Germany and remote positions worldwide.
                         </p>
                       </div>
                     </div>
