@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Sidebar from '@/components/Sidebar'
+import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
 import { TransitionProvider } from '@/components/TransitionProvider'
 import ClientLayout from '@/components/ClientLayout'
@@ -53,7 +53,7 @@ export default function RootLayout({
         <ImageProtection />
         <TransitionProvider>
           <ClientLayout>
-            <Sidebar />
+            <TopNav />
             <main id="top" className="min-h-screen bg-transparent">
               {children}
             </main>
