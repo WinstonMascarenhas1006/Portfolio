@@ -184,7 +184,7 @@ export default function HomePage() {
         
                  {/* Portrait Background Layer - Clean and modern with bottom blending */}
          <div className="absolute inset-0 w-full h-full z-10">
-           <div className="relative w-full h-full" style={{ transform: 'translateX(220px)' }}>
+           <div className="relative w-full h-full" style={{ transform: 'translateX(320px)' }}>
                            <img
                 src="/winston.png"
                 alt="Winston Mascarenhas"
