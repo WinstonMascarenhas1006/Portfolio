@@ -238,9 +238,9 @@ export default function ProjectsPage() {
         />
       </MotionSection>
 
-      {/* Category Filter */}
+      {/* Category Filter - Glassmorphism */}
       <MotionSection
-        className="py-16 bg-white/5 backdrop-blur-sm"
+        className="py-16 bg-white/10 backdrop-blur-xl border-y border-white/20 shadow-inner"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
@@ -293,7 +293,7 @@ export default function ProjectsPage() {
                   key={project.id}
                   variants={fadeInUp}
                   transition={{ delay: index * 0.1 }}
-                  className="group bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#FF8C42]/30 transition-all duration-300 overflow-hidden rounded-2xl cursor-pointer"
+                  className="group bg-white/10 backdrop-blur-xl border-2 border-white/25 hover:border-[#FF8C42]/60 transition-all duration-300 overflow-hidden rounded-2xl cursor-pointer hover:shadow-[0_0_50px_rgba(255,140,66,0.25),0_0_80px_rgba(255,94,120,0.15)] hover:scale-[1.02]"
                   onClick={() => setSelectedProject(project)}
                 >
                   <div className="relative overflow-hidden">
@@ -377,7 +377,7 @@ export default function ProjectsPage() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-gradient-to-br from-[#0F172A]/95 via-[#1E293B]/90 to-[#1E1B4B]/95 border border-white/15 shadow-2xl rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white/15 backdrop-blur-2xl border-2 border-white/30 shadow-2xl shadow-[0_0_80px_rgba(255,140,66,0.2)] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6">
