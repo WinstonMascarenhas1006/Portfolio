@@ -10,12 +10,14 @@ import {
   fadeInUp,
   staggerContainer,
 } from '@/lib/animation'
-import { Shield, Github, ExternalLink, Code, Cloud, Globe } from 'lucide-react'
+import { Shield, Github, ExternalLink, Code, Cloud, Globe, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import PageContainer from '@/components/PageContainer'
-import { projects } from '@/data/projects'
-import { cybersecurityTools, CYBERSECURITY_REPO } from '@/data/cybersecurity-tools'
+import SecurityToolModal from '@/components/SecurityToolModal'
+import ProjectDetailModal from '@/components/ProjectDetailModal'
+import { projects, type Project } from '@/data/projects'
+import { cybersecurityTools, type CybersecurityTool, CYBERSECURITY_REPO } from '@/data/cybersecurity-tools'
 
 type Tab = 'featured' | 'security'
 
@@ -23,12 +25,25 @@ export default function ProjectsPageClient() {
   const searchParams = useSearchParams()
   const [tab, setTab] = useState<Tab>('featured')
   const [filter, setFilter] = useState('all')
+  const [selectedTool, setSelectedTool] = useState<CybersecurityTool | null>(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   useEffect(() => {
     if (searchParams.get('tab') === 'security') {
       setTab('security')
     }
   }, [searchParams])
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedTool(null)
+        setSelectedProject(null)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
 
   const featured = useMemo(() => {
     if (filter === 'all') return projects
@@ -106,7 +121,11 @@ export default function ProjectsPageClient() {
                     key={project.id}
                     variants={fadeInUp}
                     transition={{ delay: index * 0.05 }}
-                    className="group flex flex-col rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 shadow-lg hover:border-[#FF8C42]/40 hover:shadow-[#FF8C42]/10 hover:shadow-xl transition-all duration-300"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedProject(project)}
+                    onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
+                    className="group flex flex-col rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 shadow-lg hover:border-[#FF8C42]/40 hover:shadow-[#FF8C42]/10 hover:shadow-xl transition-all duration-300 cursor-pointer"
                   >
                     <div className="h-1 w-12 rounded-full bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] mb-4 group-hover:w-16 transition-all" />
                     <div className="flex items-start justify-between gap-3 mb-3">
@@ -125,7 +144,13 @@ export default function ProjectsPageClient() {
                     </div>
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.github && (
-                        <Button asChild size="sm" variant="outline" className="border-[#FF8C42]/40 text-[#FF8C42] hover:bg-[#FF8C42]/10">
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="outline"
+                          className="border-[#FF8C42]/40 text-[#FF8C42] hover:bg-[#FF8C42]/10"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <a href={project.github} target="_blank" rel="noopener noreferrer">
                             <Github className="h-3.5 w-3.5 mr-1.5" />
                             GitHub
@@ -136,11 +161,18 @@ export default function ProjectsPageClient() {
                         <Button
                           size="sm"
                           className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:opacity-90 text-white"
-                          onClick={() => setTab('security')}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setTab('security')
+                          }}
                         >
                           View 15 Tools
                         </Button>
                       )}
+                      <span className="ml-auto inline-flex items-center gap-1 text-xs text-slate-500 group-hover:text-[#FF8C42] transition-colors">
+                        Details
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </span>
                     </div>
                   </MotionDiv>
                 ))}
@@ -169,15 +201,25 @@ export default function ProjectsPageClient() {
                     key={tool.id}
                     variants={fadeInUp}
                     transition={{ delay: index * 0.02 }}
-                    className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-[#FF8C42]/30 hover:bg-white/[0.07] transition-all"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedTool(tool)}
+                    onKeyDown={(e) => e.key === 'Enter' && setSelectedTool(tool)}
+                    className="group rounded-xl border border-white/10 bg-white/5 p-4 hover:border-[#FF8C42]/40 hover:bg-white/[0.07] transition-all cursor-pointer text-left"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs text-[#FF8C42] font-mono font-semibold">#{String(tool.id).padStart(2, '0')}</span>
                       <span className="text-xs text-[#A5E9FF]">{tool.period}</span>
                     </div>
-                    <h3 className="font-semibold text-white mb-1.5">{tool.name}</h3>
+                    <h3 className="font-semibold text-white mb-1.5 group-hover:text-[#FF8C42] transition-colors">{tool.name}</h3>
                     <p className="text-xs text-[#E0E0E0] leading-relaxed mb-2 line-clamp-2">{tool.description}</p>
-                    <p className="text-xs text-white/50">{tool.stack}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-xs text-white/50">{tool.stack}</p>
+                      <span className="inline-flex items-center gap-0.5 text-[10px] text-slate-500 group-hover:text-[#FF8C42] transition-colors shrink-0">
+                        Details
+                        <ChevronRight className="h-3 w-3" />
+                      </span>
+                    </div>
                   </MotionDiv>
                 ))}
               </div>
@@ -192,6 +234,9 @@ export default function ProjectsPageClient() {
           )}
         </PageContainer>
       </MotionSection>
+
+      <SecurityToolModal tool={selectedTool} onClose={() => setSelectedTool(null)} />
+      <ProjectDetailModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </div>
   )
 }
