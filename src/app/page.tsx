@@ -49,13 +49,13 @@ const skills = [
 ]
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com', icon: Github, followers: '2.5k+' },
+  { name: 'GitHub', href: 'https://github.com/WinstonMascarenhas1006', icon: Github, followers: '10 repos' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/win-mascarenhas', icon: Linkedin, connections: '500+' },
   { name: 'Email', href: 'mailto:winston@example.com', icon: Mail, response: '< 24h' },
 ]
 
 const stats = [
-  { label: 'Academic & Industry Projects', value: '8+', icon: Code },
+  { label: 'Academic & Industry Projects', value: '20+', icon: Code },
   { label: 'Years Industry Experience', value: '2', icon: Award },
   { label: 'Licenses & Certifications', value: '6', icon: Users },
   { label: 'Technologies & Tools Mastered', value: '15+', icon: Globe },
