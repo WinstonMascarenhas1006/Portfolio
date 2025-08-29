@@ -40,7 +40,7 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export const themeColor = '#1E0C3F'
+export const themeColor = '#09090b'
 
 export default function RootLayout({
   children,
@@ -49,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} text-[#E0E0E0] antialiased min-h-screen bg-gradient-to-b from-[#1E0C3F] via-[#2C1A63] to-[#2E4374]`}>
+      <body className={`${inter.className} text-slate-200 antialiased min-h-screen bg-zinc-950`}>
         <ImageProtection />
         <TransitionProvider>
           <ClientLayout>

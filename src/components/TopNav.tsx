@@ -16,28 +16,31 @@ export default function TopNav() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href))
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0F172A]/80 backdrop-blur-xl">
+    <header className="site-nav sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl backdrop-saturate-150">
       <div className="page-container flex h-14 items-center justify-between">
         <Link
           href="/"
-          className="font-semibold text-white hover:text-[#FF8C42] transition-colors"
+          className="text-sm font-semibold tracking-tight text-white transition-colors hover:text-slate-200"
           onClick={() => setOpen(false)}
         >
           Winston Mascarenhas
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden items-center gap-1 md:flex">
           {mainNav.map((item) => {
-            const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            const active = isActive(item.href)
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-lg px-4 py-2 text-sm font-medium tracking-tight transition-all duration-200 ${
                   active
-                    ? 'bg-gradient-to-r from-[#FF8C42]/20 to-[#FF5E78]/20 text-[#FF8C42]'
-                    : 'text-[#E0E0E0] hover:text-white hover:bg-white/5'
+                    ? 'border border-white/10 bg-white/[0.06] text-white shadow-sm backdrop-blur-md'
+                    : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
                 }`}
               >
                 {item.name}
@@ -48,7 +51,7 @@ export default function TopNav() {
 
         <button
           type="button"
-          className="md:hidden rounded-lg p-2 text-white hover:bg-white/10"
+          className="rounded-lg p-2 text-slate-300 hover:bg-white/[0.06] hover:text-white md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -57,16 +60,18 @@ export default function TopNav() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-white/10 bg-[#0F172A]/95 px-4 py-3">
+        <nav className="border-t border-white/[0.06] bg-zinc-950/95 px-4 py-3 backdrop-blur-xl md:hidden">
           {mainNav.map((item) => {
-            const active = pathname === item.href
+            const active = isActive(item.href)
             return (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
-                  active ? 'text-[#FF8C42] bg-white/5' : 'text-[#E0E0E0]'
+                  active
+                    ? 'border border-white/10 bg-white/[0.06] text-white'
+                    : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 {item.name}
