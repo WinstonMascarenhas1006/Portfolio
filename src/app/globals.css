@@ -170,21 +170,6 @@ body {
   }
 }
 
-/* Path drawing animation for leadership journey */
-@keyframes draw {
-  from {
-    stroke-dasharray: 0 1000;
-  }
-  to {
-    stroke-dasharray: 1000 0;
-  }
-}
-
-.animate-draw {
-  animation: draw 2s ease-in-out forwards;
-  stroke-dasharray: 0 1000;
-}
-
 /* Image Protection Styles - Enhanced */
 img, video, canvas, svg {
   -webkit-user-select: none !important;
