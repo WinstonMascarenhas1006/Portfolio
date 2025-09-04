@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ChevronDown, Download } from 'lucide-react'
+import { ArrowRight, ChevronDown, Download, Github, Linkedin } from 'lucide-react'
 import {
   MotionDiv,
   MotionH1,
@@ -11,6 +11,41 @@ import {
   fadeInUp,
   staggerContainer,
 } from '@/lib/animation'
+
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/win-mascarenhas/',
+    icon: Linkedin,
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/WinstonMascarenhas1006',
+    icon: Github,
+  },
+]
+
+function SocialCircle({
+  href,
+  label,
+  icon: Icon,
+}: {
+  href: string
+  label: string
+  icon: typeof Linkedin
+}) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-slate-200 shadow-lg shadow-black/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#FF8C42]/45 hover:bg-[#FF8C42]/10 hover:text-[#FF8C42] sm:h-20 sm:w-20"
+    >
+      <Icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9" strokeWidth={1.75} />
+    </Link>
+  )
+}
 
 export default function HeroSection() {
   return (
@@ -116,6 +151,16 @@ export default function HeroSection() {
               </Link>
             </MotionDiv>
 
+            {/* Mobile / tablet — social links below CTAs */}
+            <MotionDiv
+              variants={fadeInUp}
+              className="mt-8 flex items-center justify-center gap-5 lg:hidden"
+            >
+              {socialLinks.map(({ name, href, icon }) => (
+                <SocialCircle key={name} href={href} label={name} icon={icon} />
+              ))}
+            </MotionDiv>
+
             <MotionDiv
               variants={fadeInUp}
               className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border-t border-white/[0.06] pt-8 lg:justify-start"
@@ -135,8 +180,15 @@ export default function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Spacer column on desktop — portrait sits in absolute layer behind */}
-          <div className="hidden lg:block" aria-hidden />
+          {/* Social circles — gap between copy and portrait on desktop */}
+          <MotionDiv
+            variants={fadeInUp}
+            className="hidden lg:flex flex-col items-center justify-center gap-7 py-8"
+          >
+            {socialLinks.map(({ name, href, icon }) => (
+              <SocialCircle key={name} href={href} label={name} icon={icon} />
+            ))}
+          </MotionDiv>
         </div>
       </div>
 
