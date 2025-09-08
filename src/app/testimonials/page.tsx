@@ -182,7 +182,7 @@ export default function TestimonialsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
-                          <Card className="relative h-full bg-white/10 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col">
+                          <Card className="relative bg-white/10 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col min-h-[500px] max-h-[600px]">
            {/* Quote Symbol on Border */}
            <div className="absolute -top-3 -left-3 w-12 h-12 bg-gradient-to-br from-[#FF8C42] to-[#FF5E78] rounded-full flex items-center justify-center shadow-lg">
              <Quote className="w-6 h-6 text-white font-bold" />
@@ -205,8 +205,8 @@ export default function TestimonialsPage() {
              </CardTitle>
 
              {/* Testimonial Text */}
-             <div className="mb-4">
-               <p className="text-[#E0E0E0] text-sm leading-relaxed">
+             <div className="mb-4 flex-1">
+               <p className="text-[#E0E0E0] text-sm leading-relaxed line-clamp-4">
                  {isExpanded ? testimonial.fullTestimonial : testimonial.shortTestimonial}
                </p>
              </div>
@@ -240,9 +240,9 @@ export default function TestimonialsPage() {
                      </div>
                    )}
                  </div>
-                 <div>
-                   <div className="text-sm font-semibold text-white">{testimonial.name}</div>
-                   <div className="text-xs text-[#A5E9FF]">{testimonial.role} at {testimonial.company}</div>
+                 <div className="min-w-0 flex-1">
+                   <div className="text-sm font-semibold text-white truncate">{testimonial.name}</div>
+                   <div className="text-xs text-[#A5E9FF] truncate">{testimonial.role} at {testimonial.company}</div>
                    <div className="text-xs text-[#E0E0E0]">{testimonial.date}</div>
                  </div>
                </div>
@@ -347,78 +347,84 @@ export default function TestimonialsPage() {
 
       {/* Featured Testimonials */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">
-              Featured Testimonials
-            </h2>
-            <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto text-center">
-              Highlighted feedback from key clients and successful projects
-            </p>
-          </MotionDiv>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-white mb-4 font-display">
+                Featured Testimonials
+              </h2>
+              <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto text-center">
+                Highlighted feedback from key clients and successful projects
+              </p>
+            </MotionDiv>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonialsData.featured.map((testimonial, index) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+              {testimonialsData.featured.map((testimonial, index) => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Recent Testimonials */}
       <section className="py-20 bg-white/5 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">
-              Recent Feedback
-            </h2>
-            <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto text-center">
-              Latest testimonials from recent projects and collaborations
-            </p>
-          </MotionDiv>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-white mb-4 font-display">
+                Recent Feedback
+              </h2>
+              <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto text-center">
+                Latest testimonials from recent projects and collaborations
+              </p>
+            </MotionDiv>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonialsData.recent.map((testimonial, index) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+              {testimonialsData.recent.map((testimonial, index) => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-[#1E1B4B] via-[#0F172A] to-[#1E293B] text-white">
-        <div className="container mx-auto px-4 text-center">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
-              Ready to Join My Success Stories?
-            </h2>
-            <p className="text-xl text-[#E0E0E0] mb-8 max-w-2xl mx-auto">
-              Let&apos;s work together to create your next success story. I&apos;m ready to bring the same 
-              dedication and expertise to your project.
-            </p>
-            <div className="flex justify-center">
-              <Link href="/contact">
-                <Button size="lg" variant="secondary" className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] text-white hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Start a Project
-                </Button>
-              </Link>
-            </div>
-          </MotionDiv>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
+                Ready to Join My Success Stories?
+              </h2>
+              <p className="text-xl text-[#E0E0E0] mb-8 max-w-2xl mx-auto">
+                Let&apos;s work together to create your next success story. I&apos;m ready to bring the same 
+                dedication and expertise to your project.
+              </p>
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <Button size="lg" variant="secondary" className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] text-white hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90">
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Start a Project
+                  </Button>
+                </Link>
+              </div>
+            </MotionDiv>
+          </div>
         </div>
       </section>
     </div>
