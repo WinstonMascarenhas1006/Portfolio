@@ -302,7 +302,7 @@ export default function ContactPage() {
               Let&apos;s <span className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] bg-clip-text text-transparent">Connect</span>
             </h1>
             <p className="text-xl md:text-2xl text-[#E0E0E0] mb-8 font-body text-center">
-              Whether you&apos;re hiring, collaborating, or just exchanging ideas, I&apos;d love to hear from you. Let&apos;s build something meaningful together.
+              Whether you're hiring, collaborating, or just exchanging ideas, I'd love to hear from you. Let's build something meaningful together.
             </p>
             
             {/* Quick Action Buttons */}
@@ -370,8 +370,8 @@ export default function ContactPage() {
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <MotionDiv variants={fadeInUp} className="text-center mb-16 lg:mb-20">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let&apos;s Connect</h2>
-              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl mx-auto">I&apos;m open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
+                              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let's Connect</h2>
+                              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl mx-auto">I'm open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
             </MotionDiv>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -444,7 +444,7 @@ export default function ContactPage() {
                     <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
                     <h3 className="text-2xl font-bold text-green-400 mb-2">Message Sent!</h3>
                     <p className="text-green-300 mb-4">
-                      Thank you for reaching out. I&apos;ll get back to you within 24 hours.
+                      Thank you for reaching out. I'll get back to you within 24 hours.
                     </p>
                     <MotionDiv {...hoverScale}>
                       <Button
@@ -674,7 +674,7 @@ export default function ContactPage() {
                         <User className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-white font-semibold mb-2">Let&apos;s Connect</h3>
+                        <h3 className="text-white font-semibold mb-2">Let's Connect</h3>
                         <p className="text-[#E0E0E0]">
                           Happy to discuss opportunities, collaborations, or research projects.
                         </p>
