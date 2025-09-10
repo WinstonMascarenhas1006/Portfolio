@@ -212,13 +212,13 @@ export default function ProjectsPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center">
               <MotionH1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
                 Featured <span className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] bg-clip-text text-transparent">Projects</span>
               </MotionH1>
-              <MotionP variants={fadeInUp} className="text-xl lg:text-2xl text-[#E0E0E0] max-w-3xl mx-auto leading-relaxed">
+              <MotionP variants={fadeInUp} className="text-xl lg:text-2xl text-[#E0E0E0] max-w-3xl leading-relaxed">
                 A collection of projects showcasing my expertise in cybersecurity, cloud architecture, and full-stack development.
               </MotionP>
             </MotionDiv>
@@ -246,8 +246,8 @@ export default function ProjectsPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Filter by Category</h2>
               <p className="text-[#E0E0E0] text-center">Explore projects based on your interests and expertise areas</p>
@@ -285,8 +285,8 @@ export default function ProjectsPage() {
         animate="animate"
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <MotionDiv
@@ -307,39 +307,39 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                                                                           <div className="p-6 flex flex-col min-h-[300px]">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-powder-blue transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-[#E0E0E0] text-sm leading-relaxed mb-6">
-                          {project.description}
-                        </p>
+                  <div className="p-6 flex flex-col min-h-[300px]">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-powder-blue transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-[#E0E0E0] text-sm leading-relaxed mb-6">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-[#FF8C42] font-medium text-sm mb-2">Technologies</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.slice(0, 4).map((tech) => (
+                            <Badge key={tech} variant="outline" className="text-xs border-[#FF8C42]/30 text-white/80">
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.technologies.length > 4 && (
+                            <Badge variant="outline" className="text-xs border-[#FF8C42]/30 text-white/80">
+                              +{project.technologies.length - 4}
+                            </Badge>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="space-y-4">
-                       <div>
-                         <h4 className="text-[#FF8C42] font-medium text-sm mb-2">Technologies</h4>
-                         <div className="flex flex-wrap gap-2">
-                           {project.technologies.slice(0, 4).map((tech) => (
-                             <Badge key={tech} variant="outline" className="text-xs border-[#FF8C42]/30 text-white/80">
-                               {tech}
-                             </Badge>
-                           ))}
-                           {project.technologies.length > 4 && (
-                             <Badge variant="outline" className="text-xs border-[#FF8C42]/30 text-white/80">
-                               +{project.technologies.length - 4}
-                             </Badge>
-                           )}
-                         </div>
-                       </div>
+                      <div className="flex items-center justify-between text-xs text-[#E0E0E0]">
+                        <span>Duration: {project.duration}</span>
+                        <span>Team: {project.teamSize} people</span>
+                      </div>
 
-                       <div className="flex items-center justify-between text-xs text-[#E0E0E0]">
-                         <span>Duration: {project.duration}</span>
-                         <span>Team: {project.teamSize} people</span>
-                       </div>
-
-                       <div className="flex gap-2">
+                      <div className="flex gap-2">
                         <MotionDiv {...hoverScale}>
                           <Button
                             size="sm"
@@ -350,38 +350,10 @@ export default function ProjectsPage() {
                               setSelectedProject(project)
                             }}
                           >
-                            <Eye className="w-4 h-4 mr-2" />
+                            <Eye className="w-3 h-3 mr-1" />
                             View Details
                           </Button>
                         </MotionDiv>
-                        {project.github && (
-                          <MotionDiv {...hoverScale}>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="border-white/20 text-white/70 hover:bg-white/10"
-                              asChild
-                            >
-                              <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                                <Github className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          </MotionDiv>
-                        )}
-                        {project.live && (
-                          <MotionDiv {...hoverScale}>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="border-white/20 text-white/70 hover:bg-white/10"
-                              asChild
-                            >
-                              <a href={project.live} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            </Button>
-                          </MotionDiv>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -392,7 +364,7 @@ export default function ProjectsPage() {
         </div>
       </MotionSection>
 
-      {/* Project Detail Modal */}
+      {/* Project Modal */}
       {selectedProject && (
         <MotionDiv
           initial={{ opacity: 0 }}
