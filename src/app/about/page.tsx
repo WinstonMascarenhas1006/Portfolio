@@ -453,13 +453,14 @@ export default function AboutPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
+        <div className="relative py-24 flex justify-center">
+          <div className="w-full max-w-4xl px-4">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
             <MotionDiv
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -475,6 +476,7 @@ export default function AboutPage() {
               Cybersecurity enthusiast and cloud architect passionate about building secure, scalable solutions
             </p>
           </MotionDiv>
+        </div>
         </div>
         
         {/* Animated background elements */}
@@ -513,8 +515,8 @@ export default function AboutPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Personal Information</h2>
               <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto">
@@ -550,8 +552,8 @@ export default function AboutPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Education & Academic Background</h2>
               <p className="text-xl text-[#E0E0E0] max-w-3xl mx-auto">
@@ -581,8 +583,8 @@ export default function AboutPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
               {/* Left Column - Story */}
               <MotionDiv variants={fadeInLeft} className="space-y-8">
