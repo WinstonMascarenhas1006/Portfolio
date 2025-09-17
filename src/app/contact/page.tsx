@@ -283,13 +283,14 @@ export default function ContactPage() {
         variants={staggerContainer}
       >
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
+        <div className="relative py-24 flex justify-center">
+          <div className="w-full max-w-4xl px-4">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
             <MotionDiv
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -330,6 +331,7 @@ export default function ContactPage() {
             </MotionDiv>
           </MotionDiv>
         </div>
+        </div>
         
         {/* Animated background elements */}
         <MotionDiv
@@ -367,11 +369,11 @@ export default function ContactPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <MotionDiv variants={fadeInUp} className="text-center mb-16 lg:mb-20">
-                              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let&apos;s Connect</h2>
-                              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl mx-auto">I&apos;m open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">Let&apos;s Connect</h2>
+              <p className="text-lg lg:text-xl text-[#E0E0E0] max-w-3xl">I&apos;m open to internships, full-time roles, and collaborations. Feel free to reach out through any of the options below.</p>
             </MotionDiv>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -428,8 +430,8 @@ export default function ContactPage() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Form */}
               <MotionDiv variants={fadeInLeft}>
