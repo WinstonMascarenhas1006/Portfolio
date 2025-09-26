@@ -220,68 +220,161 @@ body {
   stroke-dasharray: 0 1000;
 }
 
-/* Image Protection Styles */
-img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-  pointer-events: none;
+/* Image Protection Styles - Enhanced */
+img, video, canvas, svg {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+  -khtml-user-drag: none !important;
+  -moz-user-drag: none !important;
+  -o-user-drag: none !important;
+  user-drag: none !important;
+  pointer-events: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Prevent text selection */
+/* Prevent text selection globally */
 * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Allow text selection for specific elements */
-p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+/* Allow text selection for specific interactive elements */
+p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea, label {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
 }
 
-/* Disable context menu */
+/* Disable context menu globally */
 * {
-  -webkit-context-menu: none;
-  -moz-context-menu: none;
-  -ms-context-menu: none;
-  context-menu: none;
+  -webkit-context-menu: none !important;
+  -moz-context-menu: none !important;
+  -ms-context-menu: none !important;
+  context-menu: none !important;
 }
 
-/* Prevent drag and drop */
+/* Prevent drag and drop globally */
 * {
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
+  -webkit-user-drag: none !important;
+  -khtml-user-drag: none !important;
+  -moz-user-drag: none !important;
+  -o-user-drag: none !important;
+  user-drag: none !important;
 }
 
-/* Disable image saving via CSS */
+/* Enhanced image protection with overlay */
 img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: 1;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: transparent !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
 }
 
-/* Prevent print styles */
+/* Prevent print styles - enhanced */
 @media print {
   * {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
+  
+  html, body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Prevent screen capture on some browsers */
+@media screen and (max-width: 0px) {
+  * {
+    display: none !important;
+  }
+}
+
+/* Disable selection highlighting */
+::selection {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+::-moz-selection {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Prevent clipboard operations */
+* {
+  -webkit-user-modify: read-only !important;
+  -moz-user-modify: read-only !important;
+  -ms-user-modify: read-only !important;
+  user-modify: read-only !important;
+}
+
+/* Disable image saving via CSS transforms */
+img {
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  perspective: 1000px !important;
+}
+
+/* Prevent screenshots via CSS */
+@media (max-width: 0px) {
+  body::before {
+    content: "Screenshot not allowed" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: black !important;
+    color: white !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+  }
+}
+
+/* Disable right-click context menu */
+html, body {
+  -webkit-context-menu: none !important;
+  -moz-context-menu: none !important;
+  -ms-context-menu: none !important;
+  context-menu: none !important;
+}
+
+/* Prevent image downloading via CSS */
+img {
+  -webkit-filter: none !important;
+  filter: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+/* Disable image saving via CSS pseudo-elements */
+img::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.01) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }
