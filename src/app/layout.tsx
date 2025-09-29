@@ -5,6 +5,8 @@ import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
 import { TransitionProvider } from '@/components/TransitionProvider'
 import ClientLayout from '@/components/ClientLayout'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import ImageProtection from '@/components/ImageProtection'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} text-[#E0E0E0] antialiased min-h-screen bg-gradient-to-b from-[#1E0C3F] via-[#2C1A63] to-[#2E4374]`}>
+        <ImageProtection />
         <TransitionProvider>
           <ClientLayout>
             <Sidebar />
@@ -57,6 +60,7 @@ export default function RootLayout({
             <Footer />
           </ClientLayout>
         </TransitionProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
