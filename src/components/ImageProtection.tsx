@@ -98,6 +98,222 @@ export default function ImageProtection() {
       }
     }
 
+    // Enhanced mobile screenshot protection
+    const enhanceMobileScreenshotProtection = () => {
+      // Detect mobile devices
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      
+      if (isMobile) {
+        // Add visual deterrent overlay
+        const overlay = document.createElement('div')
+        overlay.id = 'screenshot-deterrent'
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.02);
+          pointer-events: none;
+          z-index: 999999;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        `
+        document.body.appendChild(overlay)
+
+        // Monitor for screenshot attempts using various methods
+        let lastVisibilityState = document.visibilityState
+        let lastFocusState = document.hasFocus()
+        let screenshotAttempts = 0
+
+        // Method 1: Visibility change detection
+        const handleVisibilityChange = () => {
+          if (document.visibilityState !== lastVisibilityState) {
+            screenshotAttempts++
+            showScreenshotWarning()
+            lastVisibilityState = document.visibilityState
+          }
+        }
+
+        // Method 2: Focus change detection
+        const handleFocusChange = () => {
+          if (document.hasFocus() !== lastFocusState) {
+            screenshotAttempts++
+            showScreenshotWarning()
+            lastFocusState = document.hasFocus()
+          }
+        }
+
+        // Method 3: Screen orientation change
+        const handleOrientationChange = () => {
+          screenshotAttempts++
+          showScreenshotWarning()
+        }
+
+        // Method 4: Window resize detection (common with screenshot apps)
+        let resizeTimeout: NodeJS.Timeout
+        const handleResize = () => {
+          clearTimeout(resizeTimeout)
+          resizeTimeout = setTimeout(() => {
+            screenshotAttempts++
+            showScreenshotWarning()
+          }, 100)
+        }
+
+        // Method 5: Touch event monitoring for screenshot gestures
+        let touchStartTime = 0
+        let touchEndTime = 0
+        const handleTouchStart = (e: TouchEvent) => {
+          touchStartTime = Date.now()
+        }
+
+        const handleTouchEnd = (e: TouchEvent) => {
+          touchEndTime = Date.now()
+          const touchDuration = touchEndTime - touchStartTime
+          
+          // Long press might indicate screenshot attempt
+          if (touchDuration > 1000) {
+            screenshotAttempts++
+            showScreenshotWarning()
+          }
+        }
+
+        // Method 6: Hardware button detection (attempt)
+        const detectHardwareButtons = () => {
+          // Monitor for rapid volume changes (volume + power screenshot)
+          let lastVolume = 1
+          
+          // Try to detect volume changes (limited browser support)
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.setActionHandler('previoustrack', () => {
+              screenshotAttempts++
+              showScreenshotWarning()
+            })
+          }
+        }
+
+        // Show warning and apply visual deterrent
+        const showScreenshotWarning = () => {
+          if (screenshotAttempts > 2) {
+            // Apply stronger visual deterrent
+            overlay.style.opacity = '0.1'
+            overlay.style.background = 'rgba(255, 0, 0, 0.1)'
+            
+            // Add warning text
+            const warning = document.createElement('div')
+            warning.style.cssText = `
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: rgba(255, 0, 0, 0.9);
+              color: white;
+              padding: 20px;
+              border-radius: 10px;
+              z-index: 1000000;
+              font-size: 18px;
+              text-align: center;
+              max-width: 300px;
+            `
+            warning.textContent = '⚠️ Screenshot detected! This content is protected.'
+            document.body.appendChild(warning)
+            
+            // Remove warning after 3 seconds
+            setTimeout(() => {
+              if (warning.parentNode) {
+                warning.parentNode.removeChild(warning)
+              }
+              overlay.style.opacity = '0'
+              overlay.style.background = 'rgba(0, 0, 0, 0.02)'
+            }, 3000)
+          }
+        }
+
+        // Method 7: CSS-based mobile screenshot prevention
+        const addMobileCSSProtection = () => {
+          const style = document.createElement('style')
+          style.textContent = `
+            /* Mobile-specific screenshot prevention */
+            @media (max-width: 768px) {
+              body::before {
+                content: "📱 Screenshot Protected";
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background: rgba(255, 0, 0, 0.8);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 12px;
+                z-index: 1000000;
+                pointer-events: none;
+              }
+              
+              /* Disable mobile screenshot gestures */
+              * {
+                -webkit-touch-callout: none !important;
+                -webkit-user-select: none !important;
+                -khtml-user-select: none !important;
+                -moz-user-select: none !important;
+                -ms-user-select: none !important;
+                user-select: none !important;
+                -webkit-tap-highlight-color: transparent !important;
+              }
+              
+              /* Prevent mobile screenshot via CSS */
+              img, video, canvas {
+                -webkit-user-drag: none !important;
+                -khtml-user-drag: none !important;
+                -moz-user-drag: none !important;
+                -o-user-drag: none !important;
+                user-drag: none !important;
+                pointer-events: none !important;
+              }
+            }
+          `
+          document.head.appendChild(style)
+        }
+
+        // Add event listeners for mobile protection
+        document.addEventListener('visibilitychange', handleVisibilityChange)
+        document.addEventListener('focus', handleFocusChange)
+        document.addEventListener('blur', handleFocusChange)
+        window.addEventListener('orientationchange', handleOrientationChange)
+        window.addEventListener('resize', handleResize)
+        document.addEventListener('touchstart', handleTouchStart, { passive: true })
+        document.addEventListener('touchend', handleTouchEnd, { passive: true })
+        
+        // Initialize mobile protection
+        detectHardwareButtons()
+        addMobileCSSProtection()
+
+        // Periodic mobile screenshot detection
+        setInterval(() => {
+          // Check for common mobile screenshot indicators
+          if (window.innerHeight !== window.outerHeight || window.innerWidth !== window.outerWidth) {
+            screenshotAttempts++
+            showScreenshotWarning()
+          }
+        }, 1000)
+
+        // Cleanup function for mobile protection
+        return () => {
+          document.removeEventListener('visibilitychange', handleVisibilityChange)
+          document.removeEventListener('focus', handleFocusChange)
+          document.removeEventListener('blur', handleFocusChange)
+          window.removeEventListener('orientationchange', handleOrientationChange)
+          window.removeEventListener('resize', handleResize)
+          document.removeEventListener('touchstart', handleTouchStart)
+          document.removeEventListener('touchend', handleTouchEnd)
+          
+          const overlay = document.getElementById('screenshot-deterrent')
+          if (overlay) {
+            overlay.remove()
+          }
+        }
+      }
+    }
+
     // Screen recording detection
     const detectScreenRecording = async () => {
       try {
@@ -144,7 +360,7 @@ export default function ImageProtection() {
           -webkit-tap-highlight-color: transparent !important;
         }
         
-        img, video, canvas {
+        img, video, canvas, svg {
           -webkit-user-drag: none !important;
           -khtml-user-drag: none !important;
           -moz-user-drag: none !important;
@@ -218,6 +434,7 @@ export default function ImageProtection() {
     detectPageCapture()
     addCSSProtection()
     preventVoiceAssistantScreenshots()
+    const mobileCleanup = enhanceMobileScreenshotProtection()
 
     // Periodic screen recording detection
     const recordingInterval = setInterval(detectScreenRecording, 5000)
@@ -256,6 +473,11 @@ export default function ImageProtection() {
       
       clearInterval(interval)
       clearInterval(recordingInterval)
+      
+      // Cleanup mobile protection
+      if (mobileCleanup) {
+        mobileCleanup()
+      }
     }
   }, [])
 
