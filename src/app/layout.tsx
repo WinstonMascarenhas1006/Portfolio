@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import { TransitionProvider } from '@/components/TransitionProvider'
 import ClientLayout from '@/components/ClientLayout'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 import ImageProtection from '@/components/ImageProtection'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -61,6 +62,7 @@ export default function RootLayout({
           </ClientLayout>
         </TransitionProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

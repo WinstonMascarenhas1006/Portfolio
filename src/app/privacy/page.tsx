@@ -49,14 +49,14 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-white">Information We Collect</h2>
             </div>
             <div className="space-y-4 text-[#E0E0E0]">
-              <p>When you visit our website, we collect the following information:</p>
+              <p>This portfolio is open to browse without a login. We may collect:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Name:</strong> Your full name for personalization</li>
-                <li><strong>Company/Organization:</strong> Your workplace or organization</li>
-                <li><strong>Email Address:</strong> For communication and analytics</li>
-                <li><strong>Technical Data:</strong> IP address, browser type, device information</li>
-                <li><strong>Usage Data:</strong> Pages visited, time spent, interactions</li>
+                <li><strong>Anonymous analytics:</strong> Page views, referrers, country/region, device type (via Vercel Analytics)</li>
+                <li><strong>Performance data:</strong> Core Web Vitals via Vercel Speed Insights</li>
+                <li><strong>Voluntary contact details:</strong> Name, company, email, and message only if you submit the optional recruiter note or the Contact form</li>
+                <li><strong>Technical logs:</strong> Basic request metadata needed for security (e.g. IP on form submissions)</li>
               </ul>
+              <p>We do <strong>not</strong> require personal information before you can view the site.</p>
             </div>
           </MotionDiv>
 
@@ -72,13 +72,12 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-white">How We Use Your Information</h2>
             </div>
             <div className="space-y-4 text-[#E0E0E0]">
-              <p>We use your information for the following purposes:</p>
+              <p>We use collected information to:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Personalization:</strong> Customize content based on your interests</li>
-                <li><strong>Analytics:</strong> Understand website usage and improve user experience</li>
-                <li><strong>Communication:</strong> Respond to your inquiries and provide support</li>
-                <li><strong>Security:</strong> Protect against fraud and ensure website security</li>
-                <li><strong>Legal Compliance:</strong> Meet legal obligations and regulations</li>
+                <li><strong>Analytics:</strong> Understand which pages are useful and improve the portfolio</li>
+                <li><strong>Communication:</strong> Respond when you contact me or leave a recruiter note</li>
+                <li><strong>Security:</strong> Reduce abuse of contact forms</li>
+                <li><strong>Legal Compliance:</strong> Meet applicable obligations</li>
               </ul>
             </div>
           </MotionDiv>
