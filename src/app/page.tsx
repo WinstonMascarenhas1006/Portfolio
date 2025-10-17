@@ -191,7 +191,7 @@ export default function HomePage() {
                 className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
                 style={{
                   objectPosition: '100% 25%',
-                  transform: 'translateX(50%)',
+                  transform: 'translateX(65%)',
                   filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
                 }}
               />
