@@ -18,7 +18,7 @@ export default function TopNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0F172A]/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="page-container flex h-14 items-center justify-between">
         <Link
           href="/"
           className="font-semibold text-white hover:text-[#FF8C42] transition-colors"

@@ -182,34 +182,30 @@ export default function HomePage() {
         {/* Professional Parametric Wave Background */}
         <ParametricWaveBackground />
         
-                 {/* Portrait Background Layer - Clean and modern with bottom blending */}
-         <div className="absolute inset-0 w-full h-full z-10">
-           <div className="relative w-full h-full" style={{ transform: 'translateX(320px)' }}>
-                           <img
+         {/* Portrait Background Layer */}
+         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
+           <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] xl:w-[50%]">
+             <img
                 src="/winston.png"
-                alt="Winston Mascarenhas"
+                alt=""
+                aria-hidden
                 className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
                 style={{
-                  objectPosition: '100% 25%',
-                  transform: 'translateX(0px)',
+                  objectPosition: 'center 25%',
                   filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
                 }}
               />
-             {/* Bottom gradient mask for seamless blending */}
-             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent pointer-events-none"></div>
-             {/* Additional soft blur overlay for extra blending */}
-             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1a1a2e]/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
+             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent" />
+             <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#1a1a2e] to-transparent lg:w-1/2" />
            </div>
          </div>
         
         {/* Content Layer */}
-        <div className="relative w-full h-screen flex flex-col lg:flex-row items-center justify-center z-20">
-          {/* Left Side - Text Content */}
+        <div className="relative page-container flex flex-col items-center justify-center min-h-[calc(100vh-3.5rem)] z-20 py-16 lg:py-0">
           <MotionDiv
             variants={fadeInUp}
-            className="relative w-full lg:w-[60%] flex items-center justify-center lg:justify-center px-4 sm:px-8 lg:px-20 xl:px-24 z-10 py-8 sm:py-12 lg:py-0"
+            className="w-full max-w-3xl text-center mx-auto"
           >
-            <div className="max-w-xl text-center lg:text-center mx-auto">
               <MotionDiv variants={fadeInUp} className="mb-8">
                 {/* "My name is Winston Mascarenhas" - Bold typography with split colors */}
                 <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight drop-shadow-lg tracking-tight">
@@ -235,7 +231,7 @@ export default function HomePage() {
               {/* Description - Clean, minimalist body text */}
               <MotionP
                 variants={fadeInUp}
-                className="text-base sm:text-lg lg:text-xl text-[#E0E0E0] leading-relaxed mb-8 sm:mb-12 max-w-lg drop-shadow-lg tracking-wide"
+                className="text-base sm:text-lg lg:text-xl text-[#E0E0E0] leading-relaxed mb-8 sm:mb-12 max-w-lg mx-auto drop-shadow-lg tracking-wide"
               >
                 I build secure, scalable, and resilient cloud solutions that drive innovation and protect digital assets.
               </MotionP>
@@ -270,13 +266,7 @@ export default function HomePage() {
                   </Button>
                 </MotionDiv>
               </MotionDiv>
-            </div>
           </MotionDiv>
-
-                     {/* Right Side - Photo space */}
-           <div className="relative w-full lg:w-[40%] h-full flex items-center justify-center lg:justify-end px-8 lg:px-0">
-             {/* This space ensures the photo appears on the right side */}
-           </div>
         </div>
       </MotionSection>
 
