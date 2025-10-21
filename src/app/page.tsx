@@ -177,7 +177,7 @@ export default function HomePage() {
       {/* Stats Section */}
       <MotionSection
         id="highlights"
-        className="py-16 bg-zinc-950"
+        className="bg-surface-zinc py-16"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
@@ -245,9 +245,8 @@ export default function HomePage() {
          </div>
          
          {/* Bottom gradient fade for seamless blending */}
-         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent pointer-events-none"></div>
-         {/* Additional soft blur overlay for extra blending */}
-         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1a1a2e]/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-950/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
        </MotionSection>
 
 
