@@ -1,0 +1,157 @@
+'use client'
+
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowRight, ChevronDown, Download } from 'lucide-react'
+import {
+  MotionDiv,
+  MotionH1,
+  MotionP,
+  MotionSection,
+  fadeInUp,
+  staggerContainer,
+} from '@/lib/animation'
+
+export default function HeroSection() {
+  return (
+    <MotionSection
+      className="hero-premium relative min-h-[calc(100vh-3.5rem)] overflow-hidden"
+      initial="initial"
+      animate="animate"
+      variants={staggerContainer}
+    >
+      <div className="pointer-events-none absolute inset-0 hero-grid opacity-50" aria-hidden />
+      <div
+        className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[#FF8C42]/[0.08] blur-[120px]"
+        aria-hidden
+      />
+
+      {/* Portrait — subject sits on the left of winston.png, so anchor object-left */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[52%] max-w-[720px] lg:block"
+      >
+        <div className="relative h-full w-full">
+          <Image
+            src="/winston.png"
+            alt="Winston Mascarenhas"
+            fill
+            priority
+            className="object-cover object-left object-[left_20%]"
+            sizes="52vw"
+          />
+          {/* Narrow edge fade only — do not cover the face */}
+          <div className="absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-zinc-950/90 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[18%] bg-gradient-to-t from-zinc-950/70 to-transparent" />
+        </div>
+      </div>
+
+      <div className="page-container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col justify-center pb-24 pt-8 lg:py-16">
+        {/* Mobile portrait */}
+        <div className="relative z-[1] mx-auto mb-8 aspect-[4/5] w-full max-w-xs lg:hidden">
+          <Image
+            src="/winston.png"
+            alt="Winston Mascarenhas"
+            fill
+            priority
+            className="rounded-2xl object-cover object-left object-[left_15%]"
+            sizes="320px"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 rounded-b-2xl bg-gradient-to-t from-zinc-950 to-transparent" />
+        </div>
+
+        <div className="grid items-center lg:grid-cols-2 lg:gap-16">
+          <div className="text-center lg:max-w-xl lg:text-left xl:max-w-2xl">
+            <MotionDiv variants={fadeInUp}>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Enterprise Cloud & Security
+              </p>
+            </MotionDiv>
+
+            <MotionH1
+              variants={fadeInUp}
+              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08] xl:text-6xl"
+            >
+              <span className="block">My name is</span>
+              <span className="mt-2 block bg-gradient-to-r from-[#FF8C42] to-[#FF6B5A] bg-clip-text text-transparent">
+                Winston
+              </span>
+              <span className="mt-1 block">Mascarenhas</span>
+            </MotionH1>
+
+            <MotionP
+              variants={fadeInUp}
+              className="mt-6 text-lg font-medium tracking-tight text-slate-200 sm:text-xl"
+            >
+              Cybersecurity Enthusiast & Cloud Architect
+            </MotionP>
+
+            <MotionP
+              variants={fadeInUp}
+              className="mx-auto mt-5 max-w-lg text-base leading-7 text-slate-400 lg:mx-0"
+            >
+              I build secure, scalable, and resilient cloud solutions that drive innovation
+              and protect digital assets.
+            </MotionP>
+
+            <MotionDiv
+              variants={fadeInUp}
+              className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            >
+              <Link
+                href="/projects"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#FF8C42]/15 transition-all duration-300 hover:brightness-110 sm:px-8 sm:py-3.5 sm:text-base"
+              >
+                View My Work
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 sm:h-5 sm:w-5" />
+              </Link>
+
+              <Link
+                href="/Winston Mascarenhas_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-slate-200 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.04] hover:text-white sm:px-8 sm:py-3.5 sm:text-base"
+              >
+                <Download className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+                Resume
+              </Link>
+            </MotionDiv>
+
+            <MotionDiv
+              variants={fadeInUp}
+              className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border-t border-white/[0.06] pt-8 lg:justify-start"
+            >
+              {[
+                { value: '20+', label: 'Projects' },
+                { value: '15+', label: 'Security Tools' },
+                { value: '6', label: 'Certifications' },
+              ].map((item) => (
+                <div key={item.label}>
+                  <div className="text-xl font-bold tracking-tight text-white sm:text-2xl">{item.value}</div>
+                  <div className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </MotionDiv>
+          </div>
+
+          {/* Spacer column on desktop — portrait sits in absolute layer behind */}
+          <div className="hidden lg:block" aria-hidden />
+        </div>
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2">
+        <Link
+          href="#highlights"
+          className="group flex flex-col items-center gap-1.5 text-slate-500 transition-colors hover:text-slate-300"
+          aria-label="Explore projects and case studies"
+        >
+          <span className="text-[10px] font-medium uppercase tracking-[0.2em] sm:text-xs">
+            Explore Projects & Case Studies
+          </span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </Link>
+      </div>
+    </MotionSection>
+  )
+}
