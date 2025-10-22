@@ -26,10 +26,9 @@ export default function HeroSection() {
         aria-hidden
       />
 
-      {/* Portrait — absolute on desktop so it always renders visibly on the right */}
+      {/* Portrait — subject sits on the left of winston.png, so anchor object-left */}
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[46%] max-w-[620px] lg:block"
-        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[52%] max-w-[720px] lg:block"
       >
         <div className="relative h-full w-full">
           <Image
@@ -37,13 +36,12 @@ export default function HeroSection() {
             alt="Winston Mascarenhas"
             fill
             priority
-            className="object-cover object-[center_15%]"
-            sizes="46vw"
+            className="object-cover object-left object-[left_20%]"
+            sizes="52vw"
           />
-          {/* Soft left-edge blend into background */}
-          <div className="absolute inset-y-0 left-0 w-[45%] bg-gradient-to-r from-zinc-950 from-5% via-zinc-950/60 to-transparent" />
-          {/* Soft bottom blend */}
-          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+          {/* Narrow edge fade only — do not cover the face */}
+          <div className="absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-zinc-950/90 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-[18%] bg-gradient-to-t from-zinc-950/70 to-transparent" />
         </div>
       </div>
 
@@ -55,7 +53,7 @@ export default function HeroSection() {
             alt="Winston Mascarenhas"
             fill
             priority
-            className="rounded-2xl object-cover object-[center_15%]"
+            className="rounded-2xl object-cover object-left object-[left_15%]"
             sizes="320px"
           />
           <div className="absolute inset-x-0 bottom-0 h-1/3 rounded-b-2xl bg-gradient-to-t from-zinc-950 to-transparent" />
