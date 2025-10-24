@@ -22,8 +22,7 @@ import {
   MessageSquare,
   User,
   Linkedin,
-  AlertCircle,
-  Download
+  AlertCircle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -264,15 +263,6 @@ export default function ContactPage() {
     }
   }
 
-  const downloadResume = () => {
-    const link = document.createElement('a')
-    link.href = '/Winston Mascarenhas_Resume.pdf'
-    link.download = 'Winston_Mascarenhas_Resume.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1E293B] via-[#0F172A] to-[#1E1B4B]">
       {/* Hero Section */}
@@ -314,15 +304,7 @@ export default function ContactPage() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Button
-                onClick={downloadResume}
                 className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download Resume
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10"
                 onClick={() => handleContactAction('mailto:winstonmascarenhas@gmail.com')}
               >
                 <Mail className="w-4 h-4 mr-2" />

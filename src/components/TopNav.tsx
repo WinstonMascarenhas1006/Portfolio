@@ -6,8 +6,11 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const mainNav = [
-  { name: 'Home', href: '/' },
   { name: 'Projects', href: '/projects' },
+  { name: 'Experience', href: '/experience' },
+  { name: 'Skills', href: '/skills' },
+  { name: 'Certifications', href: '/certifications' },
+  { name: 'Testimonials', href: '/testimonials' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -21,23 +24,23 @@ export default function TopNav() {
 
   return (
     <header className="site-nav sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl backdrop-saturate-150">
-      <div className="page-container flex h-14 items-center justify-between">
+      <div className="page-container flex h-14 items-center justify-between gap-4">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-white transition-colors hover:text-slate-200"
+          className="shrink-0 text-sm font-semibold tracking-tight text-white transition-colors hover:text-slate-200"
           onClick={() => setOpen(false)}
         >
           Winston Mascarenhas
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-0.5 lg:flex">
           {mainNav.map((item) => {
             const active = isActive(item.href)
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`rounded-lg px-4 py-2 text-sm font-medium tracking-tight transition-all duration-200 ${
+                className={`rounded-lg px-2.5 py-2 text-[13px] font-medium tracking-tight transition-all duration-200 xl:px-3 ${
                   active
                     ? 'border border-white/10 bg-white/[0.06] text-white shadow-sm backdrop-blur-md'
                     : 'text-slate-400 hover:bg-white/[0.04] hover:text-slate-200'
@@ -51,7 +54,7 @@ export default function TopNav() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-slate-300 hover:bg-white/[0.06] hover:text-white md:hidden"
+          className="rounded-lg p-2 text-slate-300 hover:bg-white/[0.06] hover:text-white lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -60,7 +63,7 @@ export default function TopNav() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/[0.06] bg-zinc-950/95 px-4 py-3 backdrop-blur-xl md:hidden">
+        <nav className="border-t border-white/[0.06] bg-zinc-950/95 px-4 py-3 backdrop-blur-xl lg:hidden">
           {mainNav.map((item) => {
             const active = isActive(item.href)
             return (

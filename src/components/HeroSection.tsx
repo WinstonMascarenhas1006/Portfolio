@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ChevronDown, Download, Github, Linkedin } from 'lucide-react'
+import { ArrowRight, ChevronDown, Github, Linkedin } from 'lucide-react'
 import {
   MotionDiv,
   MotionH1,
@@ -139,16 +139,6 @@ export default function HeroSection() {
                 View My Work
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 sm:h-5 sm:w-5" />
               </Link>
-
-              <Link
-                href="/Winston Mascarenhas_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-slate-200 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.04] hover:text-white sm:px-8 sm:py-3.5 sm:text-base"
-              >
-                <Download className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-                Resume
-              </Link>
             </MotionDiv>
 
             {/* Mobile / tablet — social links below CTAs */}
@@ -166,16 +156,22 @@ export default function HeroSection() {
               className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border-t border-white/[0.06] pt-8 lg:justify-start"
             >
               {[
-                { value: '20+', label: 'Projects' },
-                { value: '15+', label: 'Security Tools' },
-                { value: '6', label: 'Certifications' },
+                { value: '20+', label: 'Projects', href: '/projects' },
+                { value: '15+', label: 'Security Tools', href: '/projects' },
+                { value: '6', label: 'Certifications', href: '/certifications' },
               ].map((item) => (
-                <div key={item.label}>
-                  <div className="text-xl font-bold tracking-tight text-white sm:text-2xl">{item.value}</div>
-                  <div className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group transition-colors"
+                >
+                  <div className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-[#FF8C42] sm:text-2xl">
+                    {item.value}
+                  </div>
+                  <div className="text-[11px] font-medium uppercase tracking-wider text-slate-500 group-hover:text-slate-400">
                     {item.label}
                   </div>
-                </div>
+                </Link>
               ))}
             </MotionDiv>
           </div>

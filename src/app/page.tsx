@@ -55,10 +55,10 @@ const socialLinks = [
 ]
 
 const stats = [
-  { label: 'Academic & Industry Projects', value: '20+', icon: Code },
-  { label: 'Years Industry Experience', value: '2', icon: Award },
-  { label: 'Licenses & Certifications', value: '6', icon: Users },
-  { label: 'Technologies & Tools Mastered', value: '15+', icon: Globe },
+  { label: 'Academic & Industry Projects', value: '20+', icon: Code, href: '/projects' },
+  { label: 'Years Industry Experience', value: '2', icon: Award, href: '/experience' },
+  { label: 'Licenses & Certifications', value: '6', icon: Users, href: '/certifications' },
+  { label: 'Technologies & Tools Mastered', value: '15+', icon: Globe, href: '/skills' },
 ]
 
 // leadership section moved to Experience page; definitions removed here
@@ -146,17 +146,20 @@ function StatsCard({ stat, index }: { stat: any; index: number }) {
       transition={{ ...smoothTransition, delay: index * 0.1 }}
       className="h-full"
     >
-      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-[#FF8C42]/30 transition-all duration-300 h-full flex flex-col items-center justify-center text-center">
+      <Link
+        href={stat.href}
+        className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-[#FF8C42]/30 transition-all duration-300 h-full flex flex-col items-center justify-center text-center block group"
+      >
         <div className="w-16 h-16 bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] rounded-xl flex items-center justify-center mb-6">
           <stat.icon className="w-8 h-8 text-deep-navy" />
         </div>
-                 <div className="text-4xl font-bold text-white mb-3">
-           {stat.value}
-         </div>
-         <div className="text-[#E0E0E0] text-sm leading-tight">
-           {stat.label}
-         </div>
-      </div>
+        <div className="text-4xl font-bold text-white mb-3 group-hover:text-[#FF8C42] transition-colors">
+          {stat.value}
+        </div>
+        <div className="text-[#E0E0E0] text-sm leading-tight">
+          {stat.label}
+        </div>
+      </Link>
     </MotionDiv>
   )
 }
@@ -249,6 +252,55 @@ export default function HomePage() {
          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-950/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
        </MotionSection>
 
+      {/* Proof — certifications & testimonials */}
+      <MotionSection
+        className="relative py-20"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+          <MotionDiv variants={fadeInUp} className="mb-10 text-center">
+            <h2 className="text-3xl font-bold text-white sm:text-4xl">Proof &amp; trust</h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#A5E9FF]">
+              Credentials and recommendations — easy to find, not buried in the footer.
+            </p>
+          </MotionDiv>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <MotionDiv variants={fadeInUp}>
+              <Link
+                href="/certifications"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition hover:border-[#FF8C42]/40 hover:bg-white/[0.06]"
+              >
+                <Award className="mb-4 h-8 w-8 text-[#FF8C42]" />
+                <h3 className="text-xl font-semibold text-white group-hover:text-[#FF8C42]">Certifications</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+                  Licenses and professional credentials that back the work.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-[#FF8C42]">
+                  View certifications <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </MotionDiv>
+            <MotionDiv variants={fadeInUp}>
+              <Link
+                href="/testimonials"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition hover:border-[#FF8C42]/40 hover:bg-white/[0.06]"
+              >
+                <Users className="mb-4 h-8 w-8 text-[#FF8C42]" />
+                <h3 className="text-xl font-semibold text-white group-hover:text-[#FF8C42]">Testimonials</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+                  What colleagues and collaborators say about working together.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-[#FF8C42]">
+                  Read testimonials <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </MotionDiv>
+          </div>
+        </div>
+      </MotionSection>
 
     </div>
   )
