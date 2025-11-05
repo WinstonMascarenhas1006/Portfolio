@@ -4,11 +4,9 @@ import { useState } from 'react'
 import { 
   MotionDiv, 
   MotionSection,
-  MotionP,
   fadeInUp, 
   fadeInFromLeft,
   staggerContainer, 
-  smoothTransition,
   hoverScale
 } from '@/lib/animation'
 import { 
@@ -20,12 +18,10 @@ import {
   ChevronRight,
   X,
   Briefcase,
-  GraduationCap,
-  Music,
-  Leaf
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import LeadershipSection from '@/components/LeadershipSection'
 
 const experiences = [
   {
@@ -67,134 +63,9 @@ const skills = [
   { name: 'Azure Cloud Platform', level: 90, category: 'cloud' }
 ]
 
-const leadershipExperiences = [
-  {
-    id: 1,
-    title: 'President',
-    organization: 'National Service Scheme (NSS)',
-    institution: 'St. Joseph\'s College',
-    duration: 'May 2021 – Aug 2022',
-    category: 'Leadership & Social Impact',
-    categoryColor: 'from-purple-500 to-pink-500',
-    icon: GraduationCap,
-    highlights: [
-      'Led 150+ volunteers in planning and executing NSS initiatives at institutional level',
-      'Promoted social responsibility and national integration through service activities',
-      'Spearheaded community projects on literacy, health awareness, and sustainability',
-      'Represented NSS at inter-college events, raising program visibility and networks'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Dance Crew Member',
-    organization: 'Mrityunjaya',
-    institution: '',
-    duration: 'Apr 2019 – Sep 2021',
-    category: 'Arts & Culture',
-    categoryColor: 'from-blue-500 to-cyan-500',
-    icon: Music,
-    highlights: [
-      'Performed at inter-college and cultural events, representing the institution',
-      'Collaborated with diverse team members, strengthening teamwork and creativity',
-      'Balanced academics with cultural contributions, showcasing time management'
-    ]
-  },
-  {
-    id: 3,
-    title: 'President',
-    organization: 'Eco Club',
-    institution: '',
-    duration: 'May 2018 – Feb 2019',
-    category: 'Environment & Sustainability',
-    categoryColor: 'from-green-500 to-emerald-500',
-    icon: Leaf,
-    highlights: [
-      'Led green initiatives promoting environmental awareness among students',
-      'Organized eco-drives and awareness campaigns on sustainability',
-      'Encouraged student participation in environmental projects and clean-up drives'
-    ]
-  }
-]
-
-// Checkpoint Node Component for Leadership Journey
-function CheckpointNode({ experience, index, isExpanded, onToggle }: { 
-  experience: any; 
-  index: number; 
-  isExpanded: boolean; 
-  onToggle: () => void;
-}) {
-  return (
-    <div className="relative flex flex-col items-center">
-      {/* Checkpoint Node */}
-      <MotionDiv
-        className="relative cursor-pointer group"
-        whileHover={{ scale: 1.1 }}
-        onClick={onToggle}
-      >
-        {/* Glowing Ring */}
-        <div className={`absolute inset-0 w-16 h-16 bg-gradient-to-r ${experience.categoryColor} rounded-full opacity-20 blur-md group-hover:opacity-40 transition-opacity duration-300`}></div>
-        
-        {/* Click Indicator - Always Visible */}
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-black/80 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">
-            Click to explore
-          </div>
-          <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/80 mx-auto"></div>
-        </div>
-        
-        {/* Main Node */}
-        <div className={`relative w-12 h-12 bg-gradient-to-r ${experience.categoryColor} rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 group-hover:border-white/40 group-hover:shadow-xl group-hover:shadow-white/20 transition-all duration-300 overflow-hidden p-1 cursor-pointer`}>
-            {experience.organization === 'National Service Scheme (NSS)' ? (
-              <img 
-                src="/NSS_logo.png" 
-                alt="NSS Logo" 
-                className="w-10 h-10 object-cover rounded-full"
-                style={{
-                  imageRendering: 'crisp-edges'
-                }}
-              />
-            ) : experience.organization === 'Mrityunjaya' ? (
-              <img 
-                src="/MRITYUNJAYA_logo.jpg" 
-                alt="Mrityunjaya Logo" 
-                className="w-10 h-10 object-cover rounded-full"
-                style={{
-                  imageRendering: 'crisp-edges'
-                }}
-              />
-            ) : (
-              <experience.icon className="w-8 h-8 text-white" />
-            )}
-          </div>
-        
-        {/* Pulse Animation */}
-        <MotionDiv
-          className={`absolute inset-0 w-12 h-12 bg-gradient-to-r ${experience.categoryColor} rounded-full opacity-30`}
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0, 0.3],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            delay: index * 0.5,
-          }}
-        />
-        
-        {/* Interactive Cursor */}
-        <div className="absolute inset-0 w-12 h-12 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        
-        {/* Button Indicator */}
-        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-1 bg-white/30 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-      </MotionDiv>
-    </div>
-  )
-}
-
 export default function ExperiencePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedExperience, setSelectedExperience] = useState<typeof experiences[0] | null>(null)
-  const [expandedLeadership, setExpandedLeadership] = useState<number | null>(null)
 
   const filteredExperiences = experiences.filter(exp => 
     selectedCategory === 'all' || exp.category === selectedCategory
@@ -442,181 +313,7 @@ export default function ExperiencePage() {
         </div>
       </MotionSection>
 
-      {/* Leadership & Community Experience - Immersive Journey */}
-      <MotionSection 
-        className="py-24 relative overflow-hidden"
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-      >
-        {/* Cosmic Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-[#312E81] opacity-60"></div>
-        
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <MotionDiv
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.8, 0.2],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 flex justify-center">
-          <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-            <MotionDiv variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Leadership Journey</h2>
-              <MotionP 
-                variants={fadeInFromLeft}
-                transition={{ ...smoothTransition, delay: 0.1 }}
-                className="text-lg text-[#A5E9FF] max-w-3xl mx-auto"
-              >
-                A visual journey through my impact milestones - each checkpoint represents a moment where I led, inspired, and created positive change.
-              </MotionP>
-            </MotionDiv>
-
-            {/* Flowing Path Container */}
-            <div className="relative min-h-96">
-              {/* Curved Path */}
-              <svg 
-                className="absolute inset-0 w-full h-32 lg:h-40 pointer-events-none"
-                viewBox="0 0 1200 160"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#FF8C42" stopOpacity="0.3" />
-                    <stop offset="50%" stopColor="#FF5E78" stopOpacity="0.6" />
-                    <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.3" />
-                  </linearGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                    <feMerge> 
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-                
-                <path
-                  d="M 50 80 Q 300 40 600 80 T 1150 80"
-                  stroke="url(#pathGradient)"
-                  strokeWidth="3"
-                  fill="none"
-                  filter="url(#glow)"
-                  className="animate-draw"
-                />
-              </svg>
-
-              {/* Checkpoint Nodes */}
-              <div className="relative z-10 flex justify-between items-center px-8 lg:px-16 mt-16">
-                {leadershipExperiences.map((experience, index) => (
-                  <CheckpointNode 
-                    key={experience.id} 
-                    experience={experience} 
-                    index={index}
-                    isExpanded={expandedLeadership === experience.id}
-                    onToggle={() => setExpandedLeadership(expandedLeadership === experience.id ? null : experience.id)}
-                  />
-                ))}
-              </div>
-
-              {/* Expanded Content Area */}
-              {expandedLeadership && (
-                <MotionDiv
-                  className="mt-8 w-full max-w-6xl mx-auto"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                >
-                  {(() => {
-                    const experience = leadershipExperiences.find(exp => exp.id === expandedLeadership)
-                    if (!experience) return null
-                    
-                    return (
-                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
-                        {/* Role Header */}
-                        <div className="flex items-start gap-6 mb-6">
-                          <div className={`w-16 h-16 bg-gradient-to-r ${experience.categoryColor} rounded-full flex items-center justify-center shadow-lg flex-shrink-0 overflow-hidden p-1`}>
-                            {experience.organization === 'National Service Scheme (NSS)' ? (
-                              <img 
-                                src="/NSS_logo.png" 
-                                alt="NSS Logo" 
-                                className="w-14 h-14 object-cover rounded-full"
-                                style={{
-                                  imageRendering: 'crisp-edges'
-                                }}
-                              />
-                            ) : experience.organization === 'Mrityunjaya' ? (
-                              <img 
-                                src="/MRITYUNJAYA_logo.jpg" 
-                                alt="Mrityunjaya Logo" 
-                                className="w-14 h-14 object-cover rounded-full"
-                                style={{
-                                  imageRendering: 'crisp-edges'
-                                }}
-                              />
-                            ) : (
-                              <experience.icon className="w-10 h-10 text-white" />
-                            )}
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
-                            <h4 className="text-lg text-[#A5E9FF] font-semibold mb-1">{experience.organization}</h4>
-                            {experience.institution && <p className="text-[#E0E0E0] text-base mb-1">{experience.institution}</p>}
-                            <p className="text-[#E0E0E0] text-base opacity-80">{experience.duration}</p>
-                          </div>
-                          <button
-                            onClick={() => setExpandedLeadership(null)}
-                            className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200 flex-shrink-0"
-                          >
-                            <X className="w-5 h-5" />
-                          </button>
-                        </div>
-
-                        {/* Category Badge */}
-                        <div className="mb-6">
-                          <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${experience.categoryColor} rounded-full text-white font-medium text-base shadow-md`}>
-                            {experience.category}
-                          </div>
-                        </div>
-
-                        {/* Impact Moments */}
-                        <div className="space-y-4">
-                          <h5 className="text-white font-semibold text-lg mb-4">Impact Moments</h5>
-                          <div className="space-y-3">
-                            {experience.highlights.map((highlight: string, i: number) => (
-                              <div key={i} className="flex items-start gap-4">
-                                <div className={`w-3 h-3 bg-gradient-to-r ${experience.categoryColor} rounded-full mt-2 flex-shrink-0`}></div>
-                                <p className="text-[#E0E0E0] text-base leading-relaxed">{highlight}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })()}
-                </MotionDiv>
-              )}
-            </div>
-          </div>
-        </div>
-      </MotionSection>
+      <LeadershipSection />
 
       {/* Experience Detail Modal */}
       {selectedExperience && (
