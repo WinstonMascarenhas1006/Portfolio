@@ -118,21 +118,33 @@ export async function POST(request: NextRequest) {
     ipConsentStore.set(clientIP, visitorData)
     console.log(`Consent stored for IP: ${clientIP}`)
 
-    // Send email notification to winstonmascarenhasjobs@gmail.com
+    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'winstonmascarenhasjobs@gmail.com'
+
+    // Send email notification on each visitor check-in
     try {
+      const smtpHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
+      const smtpPort = parseInt(process.env.EMAIL_PORT || '587', 10)
+      const smtpUser = process.env.EMAIL_USER
+      const smtpPass = process.env.EMAIL_PASS
+
+      if (!smtpUser || !smtpPass) {
+        console.error('Visitor email not sent: EMAIL_USER and EMAIL_PASS must be set in .env.local')
+        throw new Error('SMTP credentials not configured')
+      }
+
       const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-        port: parseInt(process.env.EMAIL_PORT || '587'),
-        secure: false,
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpPort === 465,
         auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
+          user: smtpUser,
+          pass: smtpPass,
         },
       })
 
       const mailOptions = {
-        from: process.env.EMAIL_FROM || 'noreply@winstonmascarenhas.com',
-        to: 'winstonmascarenhasjobs@gmail.com',
+        from: process.env.EMAIL_FROM || smtpUser,
+        to: notificationEmail,
         subject: `New Website Visitor: ${sanitizedName} from ${sanitizedCompany}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -198,7 +210,7 @@ Timestamp: ${new Date().toISOString()}
       }
 
       await transporter.sendMail(mailOptions)
-      console.log(`Email notification sent to winstonmascarenhasjobs@gmail.com for visitor: ${sanitizedName}`)
+      console.log(`Email notification sent to ${notificationEmail} for visitor: ${sanitizedName}`)
     } catch (emailError) {
       console.error('Error sending email notification:', emailError)
       // Don't fail the request if email fails, just log the error
