@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Next.js 14 no longer needs experimental.appDir
+  images: {
+    formats: ['image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2048],
+    imageSizes: [64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+  },
   async headers() {
     return [
       {

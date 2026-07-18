@@ -40,9 +40,12 @@ function SocialCircle({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="group flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-slate-200 shadow-lg shadow-black/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#FF8C42]/45 hover:bg-[#FF8C42]/10 hover:text-[#FF8C42] sm:h-20 sm:w-20"
+      className="group flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-slate-200 shadow-lg shadow-black/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#FF8C42]/45 hover:bg-[#FF8C42]/10 hover:text-[#FF8C42] xl:h-16 xl:w-16"
     >
-      <Icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9" strokeWidth={1.75} />
+      <Icon
+        className="h-7 w-7 transition-transform duration-300 group-hover:scale-110 xl:h-8 xl:w-8"
+        strokeWidth={1.75}
+      />
     </Link>
   )
 }
@@ -61,40 +64,23 @@ export default function HeroSection() {
         aria-hidden
       />
 
-      {/* Portrait — subject sits on the left of winston.png, so anchor object-left */}
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[52%] max-w-[720px] lg:block"
-      >
-        <div className="relative h-full w-full">
-          <Image
-            src="/winston.png"
-            alt="Winston Mascarenhas"
-            fill
-            priority
-            className="object-cover object-left object-[left_20%]"
-            sizes="52vw"
-          />
-          {/* Narrow edge fade only — do not cover the face */}
-          <div className="absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-zinc-950/90 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-[18%] bg-gradient-to-t from-zinc-950/70 to-transparent" />
-        </div>
-      </div>
-
-      <div className="page-container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col justify-center pb-24 pt-8 lg:py-16">
+      <div className="page-container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col justify-center pb-24 pt-8 lg:py-12">
         {/* Mobile portrait */}
-        <div className="relative z-[1] mx-auto mb-8 aspect-[4/5] w-full max-w-xs lg:hidden">
+        <div className="relative z-[1] mx-auto mb-8 aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40 sm:max-w-xs lg:hidden">
           <Image
-            src="/winston.png"
+            src="/winston-hero-mobile.png"
             alt="Winston Mascarenhas"
             fill
             priority
-            className="rounded-2xl object-cover object-left object-[left_15%]"
+            className="object-cover object-center"
             sizes="320px"
+            quality={100}
           />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 rounded-b-2xl bg-gradient-to-t from-zinc-950 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-zinc-950/80 to-transparent" />
         </div>
 
-        <div className="grid items-center lg:grid-cols-2 lg:gap-16">
+        {/* Desktop: copy | socials (gap) | portrait — never overlap the face */}
+        <div className="grid items-center lg:grid-cols-[minmax(0,1.15fr)_auto_minmax(300px,0.9fr)] lg:gap-6 xl:gap-10">
           <div className="text-center lg:max-w-xl lg:text-left xl:max-w-2xl">
             <MotionDiv variants={fadeInUp}>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
@@ -141,7 +127,6 @@ export default function HeroSection() {
               </Link>
             </MotionDiv>
 
-            {/* Mobile / tablet — social links below CTAs */}
             <MotionDiv
               variants={fadeInUp}
               className="mt-8 flex items-center justify-center gap-5 lg:hidden"
@@ -160,11 +145,7 @@ export default function HeroSection() {
                 { value: '15+', label: 'Security Tools', href: '/projects' },
                 { value: '6', label: 'Certifications', href: '/certifications' },
               ].map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="group transition-colors"
-                >
+                <Link key={item.label} href={item.href} className="group transition-colors">
                   <div className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-[#FF8C42] sm:text-2xl">
                     {item.value}
                   </div>
@@ -176,14 +157,35 @@ export default function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Social circles — gap between copy and portrait on desktop */}
+          {/* Gap column — LinkedIn / GitHub sit here, clear of the face */}
           <MotionDiv
             variants={fadeInUp}
-            className="hidden lg:flex flex-col items-center justify-center gap-7 py-8"
+            className="relative z-20 hidden flex-col items-center justify-center gap-6 self-center lg:flex"
           >
             {socialLinks.map(({ name, href, icon }) => (
               <SocialCircle key={name} href={href} label={name} icon={icon} />
             ))}
+          </MotionDiv>
+
+          {/* Portrait in layout flow — sharp, no stretch under icons */}
+          <MotionDiv
+            variants={fadeInUp}
+            className="relative z-[1] mx-auto hidden w-full max-w-[480px] lg:block xl:max-w-[520px]"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <Image
+                src="/winston-hero.png"
+                alt="Winston Mascarenhas"
+                fill
+                priority
+                className="object-cover object-[center_12%]"
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 420px, 100vw"
+                quality={100}
+              />
+              {/* Light blend only at edges — keep face sharp */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-[10%] bg-gradient-to-r from-zinc-950/70 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[14%] bg-gradient-to-t from-zinc-950/80 to-transparent" />
+            </div>
           </MotionDiv>
         </div>
       </div>
