@@ -18,8 +18,19 @@ html, body {
 }
 
 /* Force gradient background on all major elements */
-html, body, div, nav, header, main, section, footer {
+html, body, nav, header, main, footer {
   background-color: transparent !important;
+}
+
+/* Allow solid surfaces — Tailwind bg-* is overridden globally on div/section otherwise */
+.hero-premium,
+.site-nav,
+.bg-surface-zinc {
+  background-color: #09090b !important;
+}
+
+.site-nav {
+  background-color: rgba(9, 9, 11, 0.88) !important;
 }
 
 @layer components {
@@ -27,29 +38,28 @@ html, body, div, nav, header, main, section, footer {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
+  .hero-premium {
+    background-color: #09090b !important;
+  }
+
   .hero-grid {
-    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
     background-size: 40px 40px;
   }
 
-  .hero-portrait-mask {
-    -webkit-mask-image:
-      linear-gradient(to right, transparent 0%, black 18%, black 100%),
-      linear-gradient(to top, transparent 0%, black 12%, black 100%);
-    mask-image:
-      linear-gradient(to right, transparent 0%, black 18%, black 100%),
-      linear-gradient(to top, transparent 0%, black 12%, black 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+  .hero-portrait-wrap {
+    position: relative;
+    overflow: hidden;
   }
 
-  @media (max-width: 1023px) {
-    .hero-portrait-mask {
-      -webkit-mask-image:
-        linear-gradient(to top, transparent 0%, black 20%, black 100%);
-      mask-image:
-        linear-gradient(to top, transparent 0%, black 20%, black 100%);
-    }
+  .hero-portrait-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to right, #09090b 0%, rgba(9, 9, 11, 0.92) 18%, rgba(9, 9, 11, 0.45) 42%, transparent 68%),
+      linear-gradient(to top, #09090b 0%, rgba(9, 9, 11, 0.75) 22%, transparent 55%);
   }
 }
 
@@ -133,23 +143,14 @@ html, body, div, nav, header, main, section, footer {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 180, 184, 197; /* ash-gray */
-    --background-start-rgb: 30, 12, 63; /* deep royal purple */
-    --background-middle-rgb: 44, 26, 99; /* indigo */
-    --background-end-rgb: 46, 67, 116; /* steel-indigo teal */
+    --foreground-rgb: 226, 232, 240;
+    --background-rgb: 9, 9, 11;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      #1E0C3F 0%,
-      #1E0C3F 25%,
-      #2C1A63 50%,
-      #2C1A63 75%,
-      #2E4374 100%
-    );
+  background: #09090b !important;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -160,22 +161,22 @@ body {
   padding: 0;
 }
 
-/* Custom scrollbar for the cinematic theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1E0C3F;
+  background: #09090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2C1A63;
+  background: #27272a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2E4374;
+  background: #3f3f46;
 }
 
 /* Custom float animation for profile photo */
