@@ -36,7 +36,7 @@ import {
   Leaf
 } from 'lucide-react'
 import SkillsSection from '@/components/SkillsSection'
-import ParametricWaveBackground from '@/components/ParametricWaveBackground'
+import HeroSection from '@/components/HeroSection'
 import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
 
@@ -172,107 +172,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-            {/* Hero Section */}
-      <MotionSection 
-        className="relative overflow-hidden min-h-screen"
-        initial="initial"
-        animate="animate"
-        variants={staggerContainer}
-      >
-        {/* Professional Parametric Wave Background */}
-        <ParametricWaveBackground />
-        
-         {/* Portrait Background Layer */}
-         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-           <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] xl:w-[50%]">
-             <img
-                src="/winston.png"
-                alt=""
-                aria-hidden
-                className="hero-portrait w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
-                style={{
-                  objectPosition: 'center 25%',
-                  filter: 'brightness(105%) contrast(102%) saturate(108%) drop-shadow(0 0 14px rgba(255, 107, 90, 0.22)) drop-shadow(0 0 28px rgba(255, 107, 90, 0.14))'
-                }}
-              />
-             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent" />
-             <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#1a1a2e] to-transparent lg:w-1/2" />
-           </div>
-         </div>
-        
-        {/* Content Layer */}
-        <div className="relative page-container flex flex-col items-center justify-center min-h-[calc(100vh-3.5rem)] z-20 py-16 lg:py-0">
-          <MotionDiv
-            variants={fadeInUp}
-            className="w-full max-w-3xl text-center mx-auto"
-          >
-              <MotionDiv variants={fadeInUp} className="mb-8">
-                {/* "My name is Winston Mascarenhas" - Bold typography with split colors */}
-                <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight drop-shadow-lg tracking-tight">
-                  <div className="text-white drop-shadow-lg">My name is</div>
-                  <div className="mt-2 sm:mt-4">
-                    <span className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] bg-clip-text text-transparent drop-shadow-lg">
-                      Winston
-                    </span>
-                  </div>
-                  <div className="mt-1 sm:mt-2">
-                    <span className="text-white drop-shadow-lg">
-                      Mascarenhas
-                    </span>
-                  </div>
-                </h1>
-                 
-                 {/* Subtitle - Clean white for readability */}
-                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-medium text-[#A5E9FF] mb-6 sm:mb-8 drop-shadow-lg tracking-wide">
-                   Cybersecurity Enthusiast & Cloud Architect
-                 </h3>
-              </MotionDiv>
+      <HeroSection />
 
-              {/* Description - Clean, minimalist body text */}
-              <MotionP
-                variants={fadeInUp}
-                className="text-base sm:text-lg lg:text-xl text-[#E0E0E0] leading-relaxed mb-8 sm:mb-12 max-w-lg mx-auto drop-shadow-lg tracking-wide"
-              >
-                I build secure, scalable, and resilient cloud solutions that drive innovation and protect digital assets.
-              </MotionP>
-
-              <MotionDiv
-                variants={fadeInUp}
-                className="flex flex-col sm:flex-row justify-center lg:justify-center gap-4 mt-6 sm:mt-8"
-              >
-                <MotionDiv {...hoverScale}>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white border border-[#FF8C42]/30 shadow-lg font-bold px-8 py-4 text-lg rounded-full"
-                  >
-                    <Link href="/projects">
-                      View My Work
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                </MotionDiv>
-                <MotionDiv {...hoverScale}>
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="border-white/25 text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
-                  >
-                    <Link href="/Winston Mascarenhas_Resume.pdf" target="_blank">
-                      <Download className="mr-2 h-5 w-5" />
-                      Resume
-                    </Link>
-                  </Button>
-                </MotionDiv>
-              </MotionDiv>
-          </MotionDiv>
-        </div>
-      </MotionSection>
-
-            {/* Stats Section */}
-      <MotionSection 
-        className="py-16"
+      {/* Stats Section */}
+      <MotionSection
+        id="highlights"
+        className="bg-surface-zinc py-16"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
@@ -340,9 +245,8 @@ export default function HomePage() {
          </div>
          
          {/* Bottom gradient fade for seamless blending */}
-         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent pointer-events-none"></div>
-         {/* Additional soft blur overlay for extra blending */}
-         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1a1a2e]/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-950/60 to-transparent backdrop-blur-sm pointer-events-none"></div>
        </MotionSection>
 
 
