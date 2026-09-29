@@ -20,17 +20,49 @@ export default function HeroSection() {
       animate="animate"
       variants={staggerContainer}
     >
-      {/* Ambient depth */}
-      <div className="pointer-events-none absolute inset-0 hero-grid opacity-60" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 hero-grid opacity-50" aria-hidden />
       <div
-        className="pointer-events-none absolute -right-24 top-[15%] h-[480px] w-[480px] rounded-full bg-[#FF8C42]/[0.06] blur-[130px]"
+        className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[#FF8C42]/[0.08] blur-[120px]"
         aria-hidden
       />
 
-      <div className="page-container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col justify-center pb-24 pt-12 lg:py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 xl:gap-16">
-          {/* Copy */}
-          <div className="order-2 text-center lg:order-1 lg:max-w-xl lg:text-left xl:max-w-2xl">
+      {/* Portrait — absolute on desktop so it always renders visibly on the right */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[46%] max-w-[620px] lg:block"
+        aria-hidden
+      >
+        <div className="relative h-full w-full">
+          <Image
+            src="/winston.png"
+            alt="Winston Mascarenhas"
+            fill
+            priority
+            className="object-cover object-[center_15%]"
+            sizes="46vw"
+          />
+          {/* Soft left-edge blend into background */}
+          <div className="absolute inset-y-0 left-0 w-[45%] bg-gradient-to-r from-zinc-950 from-5% via-zinc-950/60 to-transparent" />
+          {/* Soft bottom blend */}
+          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+        </div>
+      </div>
+
+      <div className="page-container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col justify-center pb-24 pt-8 lg:py-16">
+        {/* Mobile portrait */}
+        <div className="relative z-[1] mx-auto mb-8 aspect-[4/5] w-full max-w-xs lg:hidden">
+          <Image
+            src="/winston.png"
+            alt="Winston Mascarenhas"
+            fill
+            priority
+            className="rounded-2xl object-cover object-[center_15%]"
+            sizes="320px"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 rounded-b-2xl bg-gradient-to-t from-zinc-950 to-transparent" />
+        </div>
+
+        <div className="grid items-center lg:grid-cols-2 lg:gap-16">
+          <div className="text-center lg:max-w-xl lg:text-left xl:max-w-2xl">
             <MotionDiv variants={fadeInUp}>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
                 Enterprise Cloud & Security
@@ -105,22 +137,8 @@ export default function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Portrait — cropped right, soft gradient blend (no harsh vertical cut) */}
-          <MotionDiv
-            variants={fadeInUp}
-            className="order-1 relative mx-auto w-full max-w-sm lg:order-2 lg:mx-0 lg:max-w-none"
-          >
-            <div className="hero-portrait-wrap relative mx-auto aspect-[3/4] w-full max-w-[340px] lg:aspect-auto lg:h-[min(72vh,640px)] lg:max-w-none">
-              <Image
-                src="/winston.png"
-                alt="Winston Mascarenhas"
-                fill
-                priority
-                className="scale-[1.08] object-cover object-[72%_12%]"
-                sizes="(max-width: 1024px) 340px, 42vw"
-              />
-            </div>
-          </MotionDiv>
+          {/* Spacer column on desktop — portrait sits in absolute layer behind */}
+          <div className="hidden lg:block" aria-hidden />
         </div>
       </div>
 
