@@ -9,25 +9,26 @@ import {
   staggerContainer,
   hoverScale 
 } from '@/lib/animation'
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ArrowUp
-} from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const socialLinks = [
+  { name: 'GitHub', href: 'https://github.com/WinstonMascarenhas1006', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/win-mascarenhas', icon: Linkedin },
   { name: 'Email', href: 'mailto:winstonmascarenhas@gmail.com', icon: Mail },
 ]
 
 const quickLinks = [
-  { name: 'About', href: '/about' },
-  { name: 'Experience', href: '/experience' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Certifications', href: '/certifications' },
+  { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+]
+
+const moreLinks = [
+  { name: 'Experience', href: '/experience' },
+  { name: 'Skills', href: '/skills' },
+  { name: 'Certifications', href: '/certifications' },
+  { name: 'Testimonials', href: '/testimonials' },
 ]
 
 export default function Footer() {
@@ -84,21 +85,28 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <MotionDiv variants={fadeInUp} className="text-center md:text-left">
-                         <h4 className="text-white font-semibold text-base mb-2">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {quickLinks.map((link, index) => (
-                <MotionDiv
+            <h4 className="text-white font-semibold text-base mb-2">Quick Links</h4>
+            <div className="flex flex-wrap gap-x-4 gap-y-1">
+              {quickLinks.map((link) => (
+                <Link
                   key={link.name}
-                  variants={fadeInUp}
-                  transition={{ delay: index * 0.05 }}
+                  href={link.href}
+                  className="text-[#E0E0E0] hover:text-[#FF6600] transition-colors text-sm"
                 >
-                  <Link
-                    href={link.href}
-                    className="text-[#E0E0E0] hover:text-[#FF6600] transition-colors duration-300 text-sm font-medium block py-1"
-                  >
-                    {link.name}
-                  </Link>
-                </MotionDiv>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+            <p className="text-white/50 text-xs mt-3 mb-1">More</p>
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {moreLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-[#E0E0E0]/80 hover:text-[#FF6600] transition-colors text-xs"
+                >
+                  {link.name}
+                </Link>
               ))}
             </div>
           </MotionDiv>

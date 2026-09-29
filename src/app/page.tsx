@@ -240,20 +240,32 @@ export default function HomePage() {
                 I build secure, scalable, and resilient cloud solutions that drive innovation and protect digital assets.
               </MotionP>
 
-              {/* Modern Download Resume button */}
               <MotionDiv
                 variants={fadeInUp}
-                className="flex justify-center lg:justify-center mt-6 sm:mt-8"
+                className="flex flex-col sm:flex-row justify-center lg:justify-center gap-4 mt-6 sm:mt-8"
               >
                 <MotionDiv {...hoverScale}>
-                  <Button 
-                    asChild 
-                    size="lg" 
-                    className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white border border-[#FF8C42]/30 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-bold px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl rounded-full drop-shadow-lg"
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-gradient-to-r from-[#FF8C42] to-[#FF5E78] hover:from-[#FF8C42]/90 hover:to-[#FF5E78]/90 text-white border border-[#FF8C42]/30 shadow-lg font-bold px-8 py-4 text-lg rounded-full"
+                  >
+                    <Link href="/projects">
+                      View My Work
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </MotionDiv>
+                <MotionDiv {...hoverScale}>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-white/25 text-white hover:bg-white/10 px-8 py-4 text-lg rounded-full"
                   >
                     <Link href="/Winston Mascarenhas_Resume.pdf" target="_blank">
-                      <Download className="mr-2 sm:mr-4 h-5 w-5 sm:h-7 sm:w-7" />
-                      Download Resume
+                      <Download className="mr-2 h-5 w-5" />
+                      Resume
                     </Link>
                   </Button>
                 </MotionDiv>
