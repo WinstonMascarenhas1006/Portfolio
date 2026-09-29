@@ -20,7 +20,7 @@ export default function TopNav() {
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-zinc-950/80 backdrop-blur-xl backdrop-saturate-150">
+    <header className="site-nav sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl backdrop-saturate-150">
       <div className="page-container flex h-14 items-center justify-between">
         <Link
           href="/"
