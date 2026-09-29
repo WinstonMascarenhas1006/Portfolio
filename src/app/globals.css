@@ -26,6 +26,31 @@ html, body, div, nav, header, main, section, footer {
   .page-container {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+
+  .hero-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .hero-portrait-mask {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 18%, black 100%),
+      linear-gradient(to top, transparent 0%, black 12%, black 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 18%, black 100%),
+      linear-gradient(to top, transparent 0%, black 12%, black 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  @media (max-width: 1023px) {
+    .hero-portrait-mask {
+      -webkit-mask-image:
+        linear-gradient(to top, transparent 0%, black 20%, black 100%);
+      mask-image:
+        linear-gradient(to top, transparent 0%, black 20%, black 100%);
+    }
+  }
 }
 
 /* Mobile-specific improvements */
