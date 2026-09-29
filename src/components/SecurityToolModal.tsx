@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { CybersecurityTool } from '@/data/cybersecurity-tools'
 import { CYBERSECURITY_REPO } from '@/data/cybersecurity-tools'
+import ToolHeaderBackground from '@/components/security-tool-headers/ToolHeaderBackground'
 
 type SecurityToolModalProps = {
   tool: CybersecurityTool | null
@@ -32,29 +33,35 @@ export default function SecurityToolModal({ tool, onClose }: SecurityToolModalPr
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-zinc-900 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-zinc-900/95 px-6 py-5 backdrop-blur-md">
-          <div>
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs font-semibold text-[#FF8C42]">
-                #{String(tool.id).padStart(2, '0')}
-              </span>
-              <Badge variant="outline" className="border-[#A5E9FF]/30 text-[#A5E9FF] text-xs">
-                {tool.period}
-              </Badge>
+        <div className="sticky top-0 z-10 border-b border-white/10">
+          <div className="relative min-h-[7.5rem] overflow-hidden">
+            <ToolHeaderBackground slug={tool.slug} />
+
+            <div className="relative flex items-start justify-between gap-4 px-6 py-5">
+              <div className="min-w-0 max-w-[72%] sm:max-w-[68%]">
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <span className="font-mono text-xs font-semibold text-[#FF8C42]">
+                    #{String(tool.id).padStart(2, '0')}
+                  </span>
+                  <Badge variant="outline" className="border-[#A5E9FF]/30 text-[#A5E9FF] text-xs">
+                    {tool.period}
+                  </Badge>
+                </div>
+                <h2 id="tool-modal-title" className="text-xl font-bold text-white drop-shadow-sm sm:text-2xl">
+                  {tool.name}
+                </h2>
+                <p className="mt-1 text-sm text-slate-300">{tool.stack}</p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="shrink-0 rounded-lg p-2 text-slate-300 transition-colors hover:bg-white/10 hover:text-white"
+                aria-label="Close"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
-            <h2 id="tool-modal-title" className="text-xl font-bold text-white sm:text-2xl">
-              {tool.name}
-            </h2>
-            <p className="mt-1 text-sm text-slate-400">{tool.stack}</p>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
-            aria-label="Close"
-          >
-            <X className="h-5 w-5" />
-          </button>
         </div>
 
         <div className="space-y-6 px-6 py-6">
