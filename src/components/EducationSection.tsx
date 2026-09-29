@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, GraduationCap } from 'lucide-react'
 import {
   MotionDiv,
   MotionSection,
@@ -10,6 +10,7 @@ import {
   staggerContainer,
 } from '@/lib/animation'
 import PageContainer from '@/components/PageContainer'
+import { Badge } from '@/components/ui/badge'
 import { educationEntries } from '@/data/education'
 
 function EducationCard({ entry, index }: { entry: (typeof educationEntries)[0]; index: number }) {
@@ -17,53 +18,60 @@ function EducationCard({ entry, index }: { entry: (typeof educationEntries)[0]; 
     <MotionDiv
       variants={fadeInUp}
       transition={{ delay: index * 0.12 }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#EEF1F5] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#FF8C42]/15"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-[#FF8C42]/35 hover:shadow-xl hover:shadow-[#FF8C42]/10"
     >
-      {/* Header band with logo */}
-      <div className="relative bg-[#1B2A4A] px-6 pb-10 pt-8">
+      {/* Logo header */}
+      <div className="relative border-b border-white/10 bg-gradient-to-r from-[#FF8C42]/10 via-transparent to-[#FF5E78]/10 px-6 py-8">
         <span
-          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-lg backdrop-blur-sm"
+          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-base"
           aria-hidden
         >
           {entry.flag}
         </span>
 
-        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 shadow-lg ring-4 ring-white/20">
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-white/15 bg-white p-2.5 shadow-md">
           <Image
             src={entry.logo}
             alt={`${entry.institution} logo`}
-            width={80}
-            height={80}
+            width={72}
+            height={72}
             className="h-full w-full object-contain"
           />
         </div>
       </div>
 
-      {/* Body */}
-      <div className="relative -mt-6 flex flex-1 flex-col rounded-t-3xl bg-[#EEF1F5] px-6 pb-6 pt-8">
-        <h3 className="text-center font-serif text-xl font-bold leading-snug text-[#1B2A4A] sm:text-2xl">
-          {entry.institution}
-        </h3>
-        <p className="mt-2 text-center text-sm font-medium text-[#4A5568] sm:text-base">
-          {entry.field}
-        </p>
-        <p className="mt-3 text-center text-base font-semibold text-[#2D3748]">
-          {entry.degree}
-        </p>
-        <p className="mt-1 text-center text-sm font-bold uppercase tracking-wide text-[#1B2A4A]/80">
+      {/* Content — dark theme, sans-serif, left-aligned */}
+      <div className="flex flex-1 flex-col px-6 py-6">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[#FF8C42]">
           {entry.status}
         </p>
-        <p className="mt-3 text-center text-sm font-medium text-[#FF6B35]">
-          {entry.period}
-        </p>
-        <p className="mt-1 text-center text-sm text-[#718096]">
-          {entry.location}
+
+        <h3 className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
+          {entry.degree}
+        </h3>
+
+        <p className="mt-2 text-base font-medium text-[#A5E9FF]">
+          {entry.institution}
         </p>
 
-        <ul className="mt-6 space-y-2.5 border-t border-[#CBD5E0]/60 pt-5">
+        <p className="mt-1 text-sm text-[#E0E0E0]/80">
+          {entry.field}
+        </p>
+
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <Badge
+            variant="outline"
+            className="border-[#FF8C42]/40 bg-[#FF8C42]/10 text-[#FF8C42] text-xs font-medium"
+          >
+            {entry.period}
+          </Badge>
+          <span className="text-sm text-[#E0E0E0]/70">{entry.location}</span>
+        </div>
+
+        <ul className="mt-6 space-y-3 border-t border-white/10 pt-5">
           {entry.highlights.map((point) => (
-            <li key={point} className="flex gap-2.5 text-sm leading-relaxed text-[#4A5568]">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF8C42]" />
+            <li key={point} className="flex gap-3 text-left text-sm leading-relaxed text-[#E0E0E0]">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-[#FF8C42] to-[#FF5E78]" />
               <span>{point}</span>
             </li>
           ))}
@@ -73,23 +81,23 @@ function EducationCard({ entry, index }: { entry: (typeof educationEntries)[0]; 
           href={entry.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center justify-center gap-1.5 text-sm font-medium text-[#1B2A4A] transition-colors hover:text-[#FF6B35]"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#FF8C42] transition-colors hover:text-[#FF5E78]"
         >
           Visit institution
-          <ExternalLink className="h-3.5 w-3.5" />
+          <ExternalLink className="h-4 w-4" />
         </Link>
       </div>
 
       {/* Campus photo */}
-      <div className="relative h-44 overflow-hidden">
+      <div className="relative h-40 overflow-hidden border-t border-white/10">
         <Image
           src={entry.campus}
           alt={`${entry.institution} campus`}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-[#0F172A]/20 to-transparent" />
       </div>
     </MotionDiv>
   )
@@ -106,12 +114,16 @@ export default function EducationSection() {
     >
       <PageContainer>
         <MotionDiv variants={fadeInUp} className="mb-12 text-center lg:mb-16">
+          <div className="mb-4 inline-flex items-center justify-center gap-2 rounded-full border border-[#FF8C42]/30 bg-[#FF8C42]/10 px-4 py-1.5">
+            <GraduationCap className="h-4 w-4 text-[#FF8C42]" />
+            <span className="text-sm font-medium text-[#FF8C42]">Academic Background</span>
+          </div>
           <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl">
             Education
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-[#E0E0E0]">
-            Academic background in computer systems and applications, from foundational
-            software engineering to graduate research in security and cloud technologies.
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#E0E0E0] sm:text-lg">
+            Graduate research in computer and systems engineering, built on a strong
+            foundation in computer applications and software development.
           </p>
         </MotionDiv>
 
